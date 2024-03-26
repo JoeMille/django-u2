@@ -16,15 +16,6 @@ setInterval(() => {
     }
 }, 2000);
 
-// code for particles.js background
-window.addEventListener('load', function() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS.load('particles-js', particlesJsonUrl, function() {
-            console.log('particles.js loaded - callback');
-        });
-    }
-});
-
 // Product image carousel
 function rotate() {
     var lastChild = $('.slider div:last-child').clone();

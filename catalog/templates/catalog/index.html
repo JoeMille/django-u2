@@ -43,10 +43,8 @@
 
 <!-- Featured Products -->
 <div class="featured-product-title">
-  <h2>FEATURED INVENTORY</h2>
-  <p>Delivery within Alpha Centauri Star System</p>
+  <h2>FEATURED PRODUCTS</h2>
 </div>
-
 <div class="featured-products">
   {% for product in featured_products|slice:":3" %}
     <div class="product">
@@ -60,15 +58,15 @@
   {% endfor %}
 </div>
 
-<!-- Legendary Equipment Section -->
-<div class="legendary-products-title">
-  <h2>LEGENDARY EQUIPMENT</h2>
-  <p>Only the best for the best</p>
+<!-- LIMITED Section -->
+<div class="limited-products-title">
+  <h2>LIMITED items</h2>
+  <p>Limited quantity items.</p>
 </div>
 
-<div class="legendary-products">
+<div class="limited-products">
   {% for product in legendary_products|slice:":3" %}
-    <div class="legendary-product">
+    <div class="limited-product">
       <h3>{{ product.title }}</h3> 
       <img src="{{ product.image.url }}" alt="{{ product.name }}">
       <p>Price: ${{ product.price }}</p>
