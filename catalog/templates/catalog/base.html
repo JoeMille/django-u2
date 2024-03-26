@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cosmic Commerce</title>
+    <!-- Set viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'catalog/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Content of the page -->
+    <header class="site-header">
+        <h1>DESPERATE-DOGS</h1>
+    </header>
+    <div id="particles-js"></div>
+    <section class="site-nav">
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'reviews' %}">Reviews</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
+
+    <div class="basket-info">
+        {% if basket %}
+            <p>User: {{ request.user.username }}</p>
+            <p>Items in basket: {{ basket.basketitem_set.count }}</p>
+            <p>Total price: {{ basket.total_cost }}</p>
+        {% else %}
+            <p>No items in basket</p>
+        {% endif %}
+    </div>
+    {% block content %}
+
+
+    {% endblock %}
+
+    <footer class="site-footer">
+        <a href="https://github.com" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+        <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i> Twitter</a>
+        <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
+    </footer>
+
+<!-- ... -->
+
+<!-- Include JavaScript file -->
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--Particles.js-->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+
+<script>
+    var particlesJsonUrl = "{% static 'catalog/js/particles.json' %}";
+  </script>
+
+<script src="{% static 'catalog/js/script.js' %}"></script>
+
+</body>
+</html>

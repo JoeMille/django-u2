@@ -1,0 +1,11 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<section class="payment-received-notice">
+    <h1>Thank you for your purchase!</h1>
+    <p>Your payment was successful.</p>
+    <p><a href="{% url 'products' %}">Continue Shopping</a></p>
+</section>
+
+{% endblock %}
