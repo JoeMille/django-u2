@@ -1,0 +1,32 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<div class="product-page-title">
+    <h2>OUR INVENTORY</h2>
+    <p>Explore and Conquer with confidence.</p>
+</div>
+
+{% for Category in categories %}
+<h2 class="product-category-title">{{ Category.name }}</h2> 
+<div class="product-list">
+    {% for product in Category.products %}
+    <div class="product-item">
+        <h2 class="product-title">{{ product.title }}</h2>
+        <p class="product-category">Category: {{ Category.name }}</p>
+        <img class="product-image" src="{{ product.image.url }}" alt="{{ product.title }}">
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">Price: {{ product.price }}</p>
+        <form method="post" action="{% url 'add_to_basket' product.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <button type="submit" class="add-to-basket">Add to Basket</button>
+        </form>
+    </div>
+    {% empty %}
+    <p class="no-products">No products available in this category.</p>
+    {% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}

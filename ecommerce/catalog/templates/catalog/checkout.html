@@ -1,0 +1,26 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    <div class="checkout-basket">
+        <h2>Checkout</h2>
+        <ul>
+            {% for item in basket.basketitem_set.all %}
+                <li>
+                    <h3>{{ item.product.title }}</h3>
+                    <p>Price: {{ item.product.price }}</p>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <form method="post" action="{% url 'remove_from_basket' item.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Remove">
+                    </form>
+                </li>
+            {% empty %}
+                <li>Your basket is empty</li>
+            {% endfor %}
+        </ul>
+        <p>Total price: {{ basket.get_total_price }}</p>
+        <a href="{% url 'payment' %}" class="confirm-basket-button">Confirm Basket?</a>
+    </div>
+
+{% endblock %}
+

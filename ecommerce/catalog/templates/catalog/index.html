@@ -1,0 +1,103 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<!--Page Content-->
+
+<div class="carousel-container">
+  <div class="slider">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+  </div>
+</div>
+<div id="test"></div>
+
+
+<!-- User authenticate and greeting section -->
+
+  {% if user.is_authenticated %}
+    <div class="user-greeting">
+      <h2>Welcome: {{ user.username }}</h2>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  {% else %}
+    <div class="index-page-welcome">
+      <h2>Welcome!</h2>
+      <p>Login here,<a href="{% url 'register' %}">signup</a> here or browse as our guest</p>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  {% endif %}
+
+
+<!-- Featured Products -->
+<div class="featured-product-title">
+  <h2>FEATURED PRODUCTS</h2>
+  <p>Some of our favourite titles</p>
+</div>
+
+<div class="featured-products">
+  {% for product in featured_products|slice:":3" %}
+    <div class="product">
+      <h3>{{ product.title }}</h3> 
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <p>Price: ${{ product.price }}</p>
+      <p>{{ product.description }}</p> 
+    </div>
+  {% empty %}
+    <p>No featured products at this time.</p>
+  {% endfor %}
+</div>
+
+<!-- Legendary Equipment Section -->
+<div class="legendary-products-title">
+  <h2>LEGENDARY EQUIPMENT</h2>
+  <p>Only the best for the best</p>
+</div>
+
+<div class="legendary-products">
+  {% for product in legendary_products|slice:":3" %}
+    <div class="legendary-product">
+      <h3>{{ product.title }}</h3> 
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <p>Price: ${{ product.price }}</p>
+      <p>{{ product.description }}</p> 
+    </div>
+  {% empty %}
+    <p>No legendary products at this time.</p>
+  {% endfor %}
+</div>
+
+<!-- Further Information-->
+
+<section class="further-info">
+  <h2>Further Information</h2>
+  <p>For more information on our products, please visit our <a href="{% url 'products' %}">products page</a>.</p>
+  <p>For reviews on our products, please visit our <a href="{% url 'reviews' %}">reviews page</a>.</p>
+  <p>To get in touch, please drop us a message using our in house messaging service below!</p>
+</section>
+
+
+<!-- Contact Form -->
+<section class="site-contact-form">
+  <h2>Contact Us</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ contact_form.as_p }}
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+    background-color: rgb(56, 49, 73);
+    margin: 0;
+}
+
+/* Base.html styles */ 
+.site-header {
+    background-image: url(../images/site-banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 250px;
+    font-family: "Lobster", sans-serif;
+    font-weight: bold; 
+    font-style: normal;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 2s ease-in-out;
+    opacity: 0.8;
+}
+
+/* Media query for small screens */
+@media only screen and (max-width: 768px) {
+    .site-header {
+        font-size: 40px;
+        height: 200px;
+    }
+}
+
+/* Nav bar */
+.site-nav ul {
+    font-family: "Lobster", sans-serif;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    position: relative;
+    z-index: 4;
+    opacity: 0.7;
+}
+
+.site-nav ul:hover {
+    opacity: 1;
+}
+
+.site-nav li {
+    background-color: #f2f2f2;
+    border: 1px solid #000;
+    padding: 18px 36px; 
+    margin: 5px; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    width: 180px; 
+    height: 90px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.site-nav li:hover {
+    background-color: #0f0736;
+    opacity: 1;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.8em; 
+}
+
+.site-nav a:hover {
+    color: white;
+    opacity: 1;
+}
+
+/* Media queries for tablets and medium-sized devices */
+@media only screen and (max-width: 768px) {
+    .site-nav ul {
+        flex-direction: column;
+    }
+    .site-nav li {
+        width: auto; 
+        height: auto; 
+        padding: 10px 20px;
+    }
+    .site-nav a {
+        font-size: 1.4em; 
+    }
+}
+
+/* Media query CSS for mobile devices */
+@media only screen and (max-width: 480px) {
+    .site-nav ul {
+        flex-direction: column;
+    }
+    .site-nav li {
+        width: auto; 
+        height: auto; 
+        padding: 8px 16px;
+    }
+    .site-nav a {
+        font-size: 1.2em; 
+    }
+}
+
+/* basket styling */
+
+.basket-info {
+    position: fixed;
+    right: 0;
+    background-color: rgb(68, 37, 117);
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-family: "Lobster", sans-serif;
+    color: white;
+    z-index: 1000;
+}
+
+.basket-info p {
+    margin: 0 0 10px;
+}
+
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .basket-info {
+        position: static;
+        right: auto;
+    }
+}
+
+
+/* image carousel styling */
+
+.carousel-container{
+    width:70vw;
+    height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+    z-index: 2;
+    margin: auto; 
+    overflow: hidden;
+    flex-grow: 1;
+    margin-top: -8% ;
+}
+.slider [class*="box"] {
+    /*   float: left; */
+    overflow: hidden;
+    border-radius:20px;
+    transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    position:absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+    max-width: 500px; 
+    max-height: 400px; 
+}
+.box1 {      
+    background:url('../images/ava-christmas.jpeg');
+    background-position:center center;
+}
+.box2 {
+    background:url('../images/doris.jpeg');
+    background-position:center center;
+}
+.box3 {
+    background:url('../images/senior-dogs.jpeg');
+    background-position:center center;
+}
+.box4 {
+    background:url('../images/scruffy-dog.jpeg');
+    background-position:center center;
+}
+.box5 {
+    background:url('../images/snazzy-face.jpeg');
+    background-position:center center;
+}
+.box6 {
+    background:url('../images/white-dog.jpeg');
+    background-position:center center;
+}
+.box7 {
+    background:url('../images/senior-dogs.jpeg');
+    background-position:center center;
+  }
+  
+.slider [class*="box"] {
+  /*   float: left; */
+    overflow: hidden;
+    border-radius:20px;
+    transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+      position:absolute;
+}
+.slider [class*="box"]:nth-child(7),
+.slider [class*="box"]:nth-child(1) {
+    width: 100vh;
+    height: 60vh;
+    transform: scale(0.2) translate(-50%,-50%);
+    top: 10%;
+    z-index:1;
+}
+.slider [class*="box"]:nth-child(2),
+.slider [class*="box"]:nth-child(6) {
+    width: 100vh;
+    height: 60vh;
+    transform: scale(0.4) translate(-50%,-50%);
+    top: 20%;
+    z-index:2;
+}
+.slider [class*="box"]:nth-child(3),
+.slider [class*="box"]:nth-child(5) {
+    width: 100vh;
+    height: 60vh;
+    transform: scale(0.6) translate(-50%,-50%);
+    top: 30%;
+    z-index:3;
+  }
+  .slider [class*="box"]:nth-child(4) {
+    width: 60vw;
+    height: 60vh;
+    border-color: #c92026;
+    color: #fff;
+    transform: scale(1) translate(-50%,-50%);
+    top: 50%;
+    z-index:4;
+  }
+.slider [class*="box"]:nth-child(1){
+    left:-13%;}
+.slider [class*="box"]:nth-child(2){
+    left:-5%;}
+.slider [class*="box"]:nth-child(3){
+    left:10%;}
+.slider [class*="box"]:nth-child(4){
+    left:50%;}
+.slider [class*="box"]:nth-child(5){
+    left:71%;}
+.slider [class*="box"]:nth-child(6){
+    left:85%;}
+.slider [class*="box"]:nth-child(7){
+    left:100%;}
+.slider .firstSlide {
+      -webkit-animation:  firstChild 1s;
+      animation:  firstChild 1s;
+}
+  /*Animation for buyers landing page slider*/
+@-webkit-keyframes firstChild {
+      0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
+      100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
+}
+@keyframes firstChild {
+     0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
+      100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
+}
+
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .carousel-container {
+        display: none;
+    }
+}
+
+/* index main content */
+
+.index-page-welcome {
+    font-family: "Lobster", sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgb(68, 37, 117);
+    max-width: 210px;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed; 
+    top: 48vh; 
+    left: 1vw; 
+    z-index: 3;
+}
+
+/* User Greeting styling */
+
+.user-greeting {
+    font-family: "Lobster", sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgb(68, 37, 117);
+    max-width: 180px;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 400px; /* adjust as needed */
+    left: 1vw; 
+    z-index: 3;
+}
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .index-page-welcome, .user-greeting {
+        position: static;
+        top: auto;
+        left: auto;
+    }
+}
+
+/* featured product styling */
+
+.featured-product-title {
+    font-family: "Lobster", sans-serif;
+    color: rgb(215, 44, 44);
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+
+/* styling for register page */
+
+.user-registration {
+    font-family: "Quantico", sans-serif;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .user-registration {
+        width: 90%;
+        padding: 10px;
+    }
+}
+
+
+/* Styling for the product page */
+
+.product-page-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 5px; 
+    height: 200px; 
+    display: block;  
+    margin-bottom: 0; 
+}
+
+.product-category-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 5px; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    text-decoration: underline;
+    margin-top: 0; 
+} 
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-item {
+    font-family: "Quantico", sans-serif;
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); 
+    opacity: 0.9;
+}
+
+.product-image {
+    width: 100px; 
+    height: auto;
+}
+@media only screen and (max-width: 480px) {
+    .product-item {
+        width: 80%; 
+        height: auto; 
+        border-radius: 0; 
+        margin: 10px auto; 
+    }
+    .product-image {
+        width: 50px; 
+        height: auto; 
+    }
+}
+
+/* CSS basic rules for no products */
+.no-products {
+    color: red;
+    font-weight: bold;
+}
+
+/* Featured products styling */
+
+.featured-product-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    background-size: cover; ;
+    background-repeat: no-repeat;
+}
+
+.featured-products {
+    font-family: "Quantico", sans-serif;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 4;
+}
+
+
+.featured-products .product {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); 
+    height: 400px;
+    overflow: auto;
+}
+
+.featured-products img {
+    width: 200px; 
+    height: auto;
+}
+/* CSS for mobile and small devices displaying the top 2 features*/
+@media only screen and (max-width: 480px) {
+    .featured-products {
+        justify-content: flex-start; 
+    }
+    .featured-products .product {
+        width: 50%; 
+        box-sizing: border-box; 
+    }
+    .featured-products .product:nth-child(n+3) {
+        display: none; 
+    }
+}
+/* Legendary Products styling */
+.legendary-products-title {
+    margin-top: 50px;
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    background-size: cover; ;
+    background-repeat: no-repeat;
+}
+
+.legendary-products {
+    font-family: "Quantico", sans-serif;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 4;
+}
+
+.legendary-products .legendary-product {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); 
+    height: 400px;
+    overflow: auto;
+}
+
+.legendary-products img {
+    width: 200px; 
+    height: auto;
+}
+/* CSS for mobile and small screen devices */
+@media only screen and (max-width: 480px) {
+    .legendary-products {
+        justify-content: center; 
+    }
+    .legendary-products .legendary-product {
+        width: 60%; 
+        box-sizing: border-box; 
+        margin-left: auto;
+    }
+    .legendary-products .legendary-product:nth-child(n+3) {
+        display: none; 
+    }
+}
+
+/* Styling for the further information section of index page */
+
+.further-info {
+    font-family: "Quantico", sans-serif;
+    background-color: white;
+    margin: 40px auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+@media only screen and (max-width: 480px) {
+    .further-info {
+        width: 90%; 
+    }
+}
+/* Contact form styling */
+
+.site-contact-form {
+    font-family: "Quantico", sans-serif;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 33%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 200px;
+    border-radius: 5px;
+}
+
+.site-contact-form input, .site-contact-form textarea {
+    width: 100%;  
+    box-sizing: border-box;  
+}
+
+@media only screen and (max-width: 480px) {
+    .site-contact-form {
+        width: 90%; 
+    }
+}
+
+/* Stripe form styling */
+
+.payment-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    margin-bottom: 10px;
+}
+
+#card-element {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#card-errors {
+    color: red;
+    margin-top: 10px;
+}
+
+
+/* Styling for the Reviews page */
+
+.review-page-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    background-size: cover; ;
+    background-repeat: no-repeat;
+}
+
+.review-form {
+    font-family: "Quantico", sans-serif;
+    padding-left: 50px;
+    background-color: #f0f0f0;
+    width: 35%; 
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-form textarea {
+    width: 400px; 
+    height: 200px; 
+}
+
+/* Styling for the Submitted User Reviews */
+
+.product-reviews {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    padding-left: 50px;
+    padding-top: 20px;
+    background-color: rgb(16, 10, 44);
+    max-width: 50%;
+    margin: 10px 0;
+    opacity: 0.9;
+
+}
+
+.product-reviews img {
+    width: 400px;  
+    height: auto;  
+    display: block;  
+    margin: 0 auto;  
+}
+
+@media only screen and (max-width: 480px) {
+    .review-form {
+        width: 90%; 
+        padding-left: 10px; 
+    }
+    .review-form textarea {
+        width: 90%; 
+        height: 150px; 
+    }
+    .product-reviews {
+        max-width: 90%; 
+        padding-left: 10px; 
+    }
+    .product-reviews img {
+        width: 90%; 
+    }
+}
+/* Styling for the edit review page */
+
+.edit-review-form {
+    font-family: "Quantico", sans-serif;
+    padding-left: 50px;
+    background-color: #f0f0f0;
+    width: 35%; 
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-review-form textarea {
+    width: 400px; 
+    height: 200px; 
+}
+
+.site-footer {
+    font-family: "Quantico", sans-serif;
+    font-size: 20px;
+    color: white; 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: rgb(16, 12, 36);
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .edit-review-form {
+        width: 90%; /* Make the form take up 90% of the screen width */
+        padding-left: 10px; /* Reduce the left padding */
+    }
+    .edit-review-form textarea {
+        width: 90%; 
+        height: 150px; 
+    }
+}
+/* Checkout page styling */
+
+
+/* Checkout basket styling */
+.checkout-basket {
+    background-color: white;
+    color: black;
+    font-family: "Exo 2", sans-serif;
+    width: 50%; 
+    margin: 0 auto; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-basket ul {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.checkout-basket li {
+    margin-bottom: 20px; 
+}
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .checkout-basket {
+        width: 90%; /* Make the basket take up 90% of the screen width */
+        padding: 30px; /* Increase the padding */
+        font-size: 1.2em; /* Increase the font size */
+    }
+    .checkout-basket li {
+        font-size: 1.2em; /* Increase the font size */
+    }
+}
+
+/* Payment Success (charge.html) styling */
+.payment-received-notice {
+    font-family: "Exo 2", sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgb(68, 37, 117);
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+@media only screen and (max-width: 480px) {
+    .payment-received-notice {
+        width: 85%; /* Make it take up 85% of the screen width */
+    }
+}
+
+
+.site-footer a {
+    margin-right: 10px; 
+    margin-left: 10px; 
+}
