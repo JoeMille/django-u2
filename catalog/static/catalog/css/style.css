@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 body {
     background-color: rgb(33, 29, 42);
@@ -7,23 +8,14 @@ body {
 }
 
 /* Base.html styles */
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; 
-    background-size: cover;
-}
-  
+
   
 .site-header {
     background-image: url('../images/site-banner.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 250px;
-    font-family: "Exo 2", sans-serif;
+    font-family: "Lobster", sans-serif;
     font-weight: bold; 
     font-style: normal;
     font-size: 50px;
@@ -47,7 +39,7 @@ body {
 
 /* Nav bar */
 .site-nav ul {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     list-style: none;
     display: flex;
     justify-content: space-around;
@@ -130,7 +122,7 @@ body {
     padding: 20px;
     border: 1px solid #000;
     border-radius: 5px;
-    font-family: "Exo 2", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     z-index: 1000;
 }
@@ -282,7 +274,7 @@ body {
 /* index main content */
 
 .index-page-welcome {
-    font-family: "Exo 2", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     text-align: center;
     background-color: rgb(68, 37, 117);
@@ -298,7 +290,7 @@ body {
 /* User Greeting styling */
 
 .user-greeting {
-    font-family: "Exo 2", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     text-align: center;
     background-color: rgb(68, 37, 117);
@@ -319,10 +311,27 @@ body {
     }
 }
 
+/* Index about styling */
+.index-about-section {
+    font-family: "Lobster", sans-serif;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 50%;
+}
+
+.index-about-section img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
 /* featured product styling */
 
 .featured-product-title {
-    font-family: "Quantic", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -335,7 +344,7 @@ body {
 /* styling for register page */
 
 .user-registration {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     background-color: white;
     padding: 20px;
     margin: 0 auto;
@@ -356,7 +365,7 @@ body {
 /* Styling for the product page */
 
 .product-page-title {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -367,7 +376,7 @@ body {
 }
 
 .product-category-title {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -385,7 +394,7 @@ body {
 }
 
 .product-item {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     background-color: white;
     margin: 10px;
     padding: 20px;
@@ -420,7 +429,7 @@ body {
 /* Featured products styling */
 
 .featured-product-title {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -430,7 +439,7 @@ body {
 }
 
 .featured-products {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -471,7 +480,7 @@ body {
 /* Legendary Products styling */
 .limited-products-title {
     margin-top: 50px;
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -481,7 +490,7 @@ body {
 }
 
 .limited-products {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -523,7 +532,7 @@ body {
 /* Styling for the further information section of index page */
 
 .further-info {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     background-color: white;
     margin: 40px auto;
     padding: 20px;
@@ -539,7 +548,7 @@ body {
 /* Contact form styling */
 
 .site-contact-form {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     background-color: white;
     padding: 20px;
     margin: 0 auto;
@@ -598,7 +607,7 @@ body {
 /* Styling for the Reviews page */
 
 .review-page-title {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -608,7 +617,7 @@ body {
 }
 
 .review-form {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     padding-left: 50px;
     background-color: #f0f0f0;
     width: 35%; 
@@ -625,7 +634,7 @@ body {
 /* Styling for the Submitted User Reviews */
 
 .product-reviews {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     padding-left: 50px;
     padding-top: 20px;
@@ -663,7 +672,7 @@ body {
 /* Styling for the edit review page */
 
 .edit-review-form {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     padding-left: 50px;
     background-color: #f0f0f0;
     width: 35%; 
@@ -678,7 +687,7 @@ body {
 }
 
 .site-footer {
-    font-family: "Quantico", sans-serif;
+    font-family: "Lobster", sans-serif;
     font-size: 20px;
     color: white; 
     margin-top: 20px;
@@ -736,7 +745,7 @@ body {
 
 /* Payment Success (charge.html) styling */
 .payment-received-notice {
-    font-family: "Exo 2", sans-serif;
+    font-family: "Lobster", sans-serif;
     color: white;
     text-align: center;
     background-color: rgb(68, 37, 117);
