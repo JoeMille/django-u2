@@ -1,1 +1,1 @@
-web: gunicorn DJANGO-U2.wsgi
+web: gunicorn ecommerce.wsgi
