@@ -1,1 +1,1 @@
-web: gunicorn catalog.wsgi
+web: gunicorn DJANGO-U2.wsgi
