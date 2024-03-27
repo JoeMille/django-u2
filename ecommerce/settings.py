@@ -41,6 +41,7 @@ DATABASES = {
 # Application definition
 
 INSTALLED_APPS = [
+    'ecommerce',
     'catalog',
     'products',
     'django.contrib.admin',
