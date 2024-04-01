@@ -5,23 +5,21 @@
 
 {% block content %}
 
-<!--Page Content-->
-
 <section class="index-about-section">
-<img src="{% static 'catalog/images/penny-profile.jpeg' %}" alt="Penny-profile">  
-<h2>About Penny Miller</h2>
-<p>Penny Miller is a British born canine behavior counsellor who had a come to Jesus moment 
-when she witnessed a local English dog trainer she had hired to train her naughty dog Nelson, 
-use a choke chain to almost strangle him into submission. 
-Right after she threatened to lay the guy out, (yeah, she’s like that), she enlisted the services 
-of British dog behaviorist Dr. Kendall Shepherd who taught her a different, kinder way of looking 
-at behavior problems, and the decision was made there and then to pursue this further. 
-Years of study in dog psychology and behavior, both in college, and later, with world renowned 
-trainers like John Rogerson, Patricia McConnell, Michael Shikashio, Ken McCort, and Suzanne 
-Clothier to name but a few, have provided Penny with a uniquely empathic approach to dog behavior 
-and handling but, she says, her greatest and most intense period of learning was always and will 
-always be her work with shelter dogs. </p>
-</section>
+  <img src="{% static 'catalog/images/penny-profile.jpeg' %}" alt="Penny-profile">  
+  <h2>About Penny Miller</h2>
+  <p>Penny Miller is a British born canine behavior counsellor who had a come to Jesus moment 
+  when she witnessed a local English dog trainer she had hired to train her naughty dog Nelson, 
+  use a choke chain to almost strangle him into submission. 
+  Right after she threatened to lay the guy out, (yeah, she’s like that), she enlisted the services 
+  of British dog behaviorist Dr. Kendall Shepherd who taught her a different, kinder way of looking 
+  at behavior problems, and the decision was made there and then to pursue this further. 
+  Years of study in dog psychology and behavior, both in college, and later, with world renowned 
+  trainers like John Rogerson, Patricia McConnell, Michael Shikashio, Ken McCort, and Suzanne 
+  Clothier to name but a few, have provided Penny with a uniquely empathic approach to dog behavior 
+  and handling but, she says, her greatest and most intense period of learning was always and will 
+  always be her work with shelter dogs. </p>
+  </section>
 
 <!-- User authenticate and greeting section -->
 
@@ -45,20 +43,32 @@ always be her work with shelter dogs. </p>
 </div>
 {% endif %}
 
-<div class="carousel-container">
-  <div class="slider">
-    <div class="box1"></div>
-    <div class="box2"></div>
-    <div class="box3"></div>
-    <div class="box4"></div>
-    <div class="box5"></div>
-    <div class="box6"></div>
-    <div class="box7"></div>
-    <div class="box8"></div>
-    <div class="box9"></div>
+
+<div class="image-carousel">
+  <div class="carousel__track-container">
+      <ul class="carousel__track">
+          <li class="carousel__slide current-slide">
+              <img class="carousel__image" src="{% static 'catalog/images/ava-christmas.jpeg' %}" alt="Image 1">
+          </li>
+          <li class="carousel__slide">
+              <img class="carousel__image" src="{% static 'catalog/images/doris.jpeg' %}" alt="Image 2">
+          </li>
+          <li class="carousel__slide">
+              <img class="carousel__image" src="{% static 'catalog/images/scruffy-dog.jpeg' %}" alt="Image 3">
+          </li>
+          <li class="carousel__slide">
+            <img class="carousel__image" src="{% static 'catalog/images/senior-dogs.jpeg' %}" alt="Image 3">
+        </li>
+        <li class="carousel__slide">
+          <img class="carousel__image" src="{% static 'catalog/images/snazzy-face.jpeg' %}" alt="Image 3">
+      </li>
+      <li class="carousel__slide">
+        <img class="carousel__image" src="{% static 'catalog/images/white-dog.jpeg' %}" alt="Image 3">
+    </li>
+          <!-- Add more images as needed -->
+      </ul>
   </div>
 </div>
-<div id="test"></div>
 
 <!--Author profile-->
 <div class="index-author-profile">

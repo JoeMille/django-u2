@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+
 
 body {
-    background-color: white;
+    background-color: rgb(88, 72, 112);
     margin: 0;
 }
 
@@ -20,7 +22,7 @@ body {
     font-weight: bold; 
     font-style: normal;
     font-size: 50px;
-    color: white;
+    color: rgb(20, 23, 49);
     text-align: center;
     display: flex;
     align-items: center;
@@ -44,48 +46,34 @@ body {
 
 /* Nav bar */
 .site-nav ul {
-    font-family: "Lobster", sans-serif;
+    font-family: "Rubik Scribble", sans-serif;
     list-style: none;
     display: flex;
     justify-content: space-around;
     padding: 0;
     position: relative;
     z-index: 4;
-    opacity: 0.7;
-}
-
-.site-nav ul:hover {
-    opacity: 1;
 }
 
 .site-nav li {
-    background-color: #f2f2f2;
+    background-color: #0f0736; /* Set the background color */
+    color: white; /* Set the font color */
     border: 1px solid #000;
     padding: 18px 36px; 
     margin: 5px; 
     border-radius: 5px;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
     width: 180px; 
     height: 90px; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-}
-
-.site-nav li:hover {
-    background-color: #0f0736;
-    opacity: 1;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); /* Add box shadow */
 }
 
 .site-nav a {
     text-decoration: none;
-    color: #000;
+    color: white; /* Set the font color */
     font-size: 1.8em; 
-}
-
-.site-nav a:hover {
-    color: white;
-    opacity: 1;
 }
 
 /* Media queries for tablets and medium-sized devices */
@@ -143,186 +131,6 @@ body {
         right: auto;
     }
 }
-/* Logout function styling */
-
-
-/* image carousel styling */
-
-.carousel-container{
-    width:70vw;
-    height:80vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position: relative;
-    z-index: 2;
-    margin: auto; 
-    overflow: hidden;
-    flex-grow: 1;
-    margin-top: 10px;
-}
-.slider [class*="box"] {
-    /*   float: left; */
-    overflow: hidden;
-    border-radius:20px;
-    transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-    position:absolute;
-    background-size: 100% 100%;
-    background-repeat: no-repeat; 
-    max-width: 425px; 
-    max-height: 325px; 
-}
-.box1 {      
-    background:url('../images/ava-christmas.jpeg');
-    background-position:center center;
-}
-.box2 {
-    background:url('../images/doris.jpeg');
-    background-position:center center;
-}
-.box3 {
-    background:url('../images/scruffy-dog.jpeg');
-    background-position:center center;
-}
-.box4 {
-    background:url('../images/senior-dogs.jpeg');
-    background-position:center center;
-}
-.box5 {
-    background:url('../images/snazzy-face.jpeg');
-    background-position:center center;
-}
-.box6 {
-    background:url('../images/white-dog.jpeg');
-    background-position:center center;
-}
-.box7 {
-    background:url('../images/thanks-stopping2.png');
-    background-position:center center;
-  }
-.box8 {
-    background:url('../images/ava-christmas.jpeg');
-    background-position:center center;
-}
-.box9 {
-    background:url('../images/doris.jpeg');
-    background-position:center center;
-}
-  
-.slider [class*="box"] {
-  /*   float: left; */
-    overflow: hidden;
-    border-radius:20px;
-    transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      position:absolute;
-}
-.slider [class*="box"]:nth-child(7),
-.slider [class*="box"]:nth-child(1) {
-    width: 100vh;
-    height: 60vh;
-    transform: scale(0.2) translate(-50%,-50%);
-    top: 10%;
-    z-index:1;
-}
-.slider [class*="box"]:nth-child(2),
-.slider [class*="box"]:nth-child(6) {
-    width: 100vh;
-    height: 60vh;
-    transform: scale(0.4) translate(-50%,-50%);
-    top: 20%;
-    z-index:2;
-}
-.slider [class*="box"]:nth-child(3),
-.slider [class*="box"]:nth-child(5) {
-    width: 100vh;
-    height: 60vh;
-    transform: scale(0.6) translate(-50%,-50%);
-    top: 30%;
-    z-index:3;
-  }
-  .slider [class*="box"]:nth-child(4) {
-    width: 60vw;
-    height: 60vh;
-    border-color: #c92026;
-    color: #fff;
-    transform: scale(1) translate(-50%,-50%);
-    top: 50%;
-    z-index:4;
-  }
-.slider [class*="box"]:nth-child(1){
-    left:-13%;}
-.slider [class*="box"]:nth-child(2){
-    left:-5%;}
-.slider [class*="box"]:nth-child(3){
-    left:10%;}
-.slider [class*="box"]:nth-child(4){
-    left:50%;}
-.slider [class*="box"]:nth-child(5){
-    left:71%;}
-.slider [class*="box"]:nth-child(6){
-    left:85%;}
-.slider [class*="box"]:nth-child(7){
-    left:100%;}
-.slider .firstSlide {
-      -webkit-animation:  firstChild 1s;
-      animation:  firstChild 1s;
-}
-  /*Animation for buyers landing page slider*/
-@-webkit-keyframes firstChild {
-      0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
-      100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
-}
-@keyframes firstChild {
-     0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
-      100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
-}
-
-/* CSS for mobile and small devices */
-@media only screen and (max-width: 480px) {
-    .carousel-container {
-        display: none;
-    }
-}
-
-/* index main content */
-
-.index-page-welcome {
-    font-family: "Lobster", sans-serif;
-    color: white;
-    text-align: center;
-    background-color: rgb(68, 37, 117);
-    max-width: 210px;
-    border-radius: 5px;
-    padding: 10px;
-    top: 48vh; 
-    left: 1vw; 
-    z-index: 3;
-    margin-top: -350px;
-}
-
-/* User Greeting styling */
-
-.user-greeting {
-    font-family: "Lobster", sans-serif;
-    color: white;
-    text-align: center;
-    background-color: rgb(68, 37, 117);
-    max-width: 180px;
-    border-radius: 5px;
-    padding: 10px;
-    top: 400px; /* adjust as needed */
-    left: 1vw; 
-    z-index: 3;
-    margin-top: -350px;
-}
-/* CSS for mobile and small devices */
-@media only screen and (max-width: 480px) {
-    .index-page-welcome, .user-greeting {
-        position: static;
-        top: auto;
-        left: auto;
-    }
-}
 
 /* Index about styling */
 .index-about-section {
@@ -330,7 +138,7 @@ body {
     font-family: 'Lobster', cursive;
     padding: 20px;
     margin-left: auto;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 50px;
     width: 70%;
     border-radius: 5px;
@@ -347,6 +155,81 @@ body {
 
 }
 
+/* index page welcome */
+
+.index-page-welcome {
+    font-family: "Lobster", sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgb(68, 37, 117);
+    max-width: 250px;
+    border-radius: 5px;
+    padding: 10px;
+    top: 400px; /* adjust as needed */
+    left: 1vw; 
+    z-index: 3;
+    margin-top: -400px;
+    margin-bottom: 50px;
+}
+
+/* User Greeting styling */
+
+.user-greeting {
+    font-family: "Lobster", sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgb(68, 37, 117);
+    max-width: 180px;
+    border-radius: 5px;
+    padding: 10px;
+    top: 400px; /* adjust as needed */
+    left: 1vw; 
+    z-index: 3;
+    margin-top: -350px;
+    margin-bottom: 50px;
+}
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .index-page-welcome, .user-greeting {
+        position: static;
+        top: auto;
+        left: auto;
+    }
+}
+
+/* image carousel styling */
+
+.carousel {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.carousel__track {
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel__slide {
+    width: 500px;
+    height: 400px;
+    flex: 0 0 auto;
+}
+
+.carousel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+
 /* index about author section styling */
 .index-author-profile {
     width: 75%;
@@ -356,6 +239,7 @@ body {
     margin: auto;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* This adds a shadow to the border */
 }
 
 .index-author-profile img {
