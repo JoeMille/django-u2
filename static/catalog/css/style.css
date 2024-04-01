@@ -250,6 +250,7 @@ body {
 /* featured product styling */
 
 .featured-product-title {
+    background-color: rgb(68, 37, 117);
     font-family: "Lobster", sans-serif;
     color: white;
     font-size: 30px;
@@ -257,6 +258,8 @@ body {
     padding: 10px;
     background-size: cover; ;
     background-repeat: no-repeat;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
