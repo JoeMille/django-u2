@@ -11,6 +11,7 @@ body {
 
   
 .site-header {
+    background-color: rgb(68, 37, 117);
     background-image: url('../images/site-banner.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,6 +28,10 @@ body {
     transition: filter 2s ease-in-out;
     opacity: 0.8;
     background-position: center;
+}
+
+.site-header h1, .site-header h2 {
+    display: block;
 }
 
 /* Media query for small screens */
@@ -340,6 +345,22 @@ body {
     display: block;
     justify-content: center;
 
+}
+
+/* index about author section styling */
+.index-author-profile {
+    width: 75%;
+    font-family: 'Lobster', cursive;
+    background-color: rgb(68, 37, 117);
+    color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.index-author-profile img {
+    height: 100px;
+    width: auto;
 }
 
 /* featured product styling */
