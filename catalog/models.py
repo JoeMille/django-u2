@@ -14,6 +14,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     title = models.CharField(max_length=200, default='Default Title')
     description = models.TextField()
+    second_description = models.TextField(null=True, blank=True)  # Add this line
     price = models.DecimalField(max_digits=6, decimal_places=2)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)

@@ -4,7 +4,11 @@
 
 <div class="product-page-title">
     <h2>Browse Below a Selection of Our Products</h2>
+    <p>All of Penny Millers books are available for purchase as hard back or paperback editions.
+        Please browse our selection of products below, with more to be added soon. 
+      </p>
 </div>
+
 
 {% for category, products in products_by_category.items %}
     <h2 class="category-title">{{ category.name }}</h2>
@@ -15,6 +19,7 @@
             <img class="product-image" src="{{ product.image.url }}" alt="{{ product.title }}">
             <p class="product-description">{{ product.description }}</p>
             <p class="product-price">Price: {{ product.price }}</p>
+            <div class="popup-description">{{ product.second_description }}</div> <!-- Add this line -->
             <form method="post" action="{% url 'add_to_basket' product.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="product_id" value="{{ product.id }}">

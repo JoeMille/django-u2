@@ -358,65 +358,112 @@ body {
 /* Styling for the product page */
 
 .product-page-title {
-    font-family: "Lobster", sans-serif;
+    font-family: "Rubik Scribble", sans-serif;
+    background-color: #0f0736;
     color: white;
     font-size: 30px;
     text-align: center;
     padding: 5px; 
-    height: 200px; 
-    display: block;  
-    margin-bottom: 0; 
+    height: auto; /* let the height adjust to the content */
+    max-width: 50%; /* make it 600px wide */
+    border-radius: 5px;
+    margin: 0 auto; /* center the element */
+    display: block; /* make sure the element is block-level */
+    overflow: auto; /* handle text spilling over */
 }
 
-.product-category-title {
-    font-family: "Lobster", sans-serif;
+.product-page-title p {
+    font-family: "Roboto", sans-serif;
+    margin: 0; /* remove default paragraph margins */
+    padding: 0; /* remove default paragraph padding */
+}
+
+.product-page-welcome {
+    font-family: "Roboto", sans-serif;
     color: white;
-    font-size: 30px;
     text-align: center;
-    padding: 5px; 
-    background-size: cover; 
-    background-repeat: no-repeat;
-    text-decoration: underline;
-    margin-top: 0; 
-} 
+    background-color: rgb(68, 37, 117);
+    max-width: 600px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto; /* center the element */
+    display: block; /* make sure the element is block-level */
+}
+
+.category-title {
+    font-family: "Rubik Scribble", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    background-color: #0f0736;
+    margin-top: 1em;
+    max-width: 450px; /* set max width */
+    margin: 1em auto; /* center the element */
+    display: block; /* make sure the element is block-level */
+    border-radius: 5px;
+}
 
 .product-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 2em;
 }
 
 .product-item {
-    font-family: "Lobster", sans-serif;
+    position: relative;
     background-color: white;
-    margin: 10px;
+    color: black;
+    width: calc(25% - 20px); /* four items per row, with 20px gap */
+    margin: 10px; /* creates a 20px gap between items */
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: calc(20% - 20px); 
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.product-item img {
+    width: 100px; /* thumbnail size */
+    height: auto;
+}
+
+.product-title, .product-description, .product-price {
+    margin: 10px 0;
+}
+
+/* Product Pop-Up styles */
+
+.popup-description {
+    display: none;
+    position: absolute;
+    background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient background */
+    color: white;
+    padding: 15px; /* Increased padding */
+    line-height: 1.5; /* Increased line height */
+    border-radius: 5px;
+    width: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+    top: 0;
+    left: 20px;
+    box-shadow: 0px 10px 20px 10px rgba(0,0,0,0.2); /* Increased box shadow */
+    z-index: 1;
+    font-family: 'Arial', sans-serif; /* Change as needed */
     opacity: 0.9;
 }
 
-.product-image {
-    width: 100px; 
-    height: auto;
-}
-@media only screen and (max-width: 480px) {
-    .product-item {
-        width: 80%; 
-        height: auto; 
-        border-radius: 0; 
-        margin: 10px auto; 
-    }
-    .product-image {
-        width: 50px; 
-        height: auto; 
-    }
+.product-item:hover .popup-description {
+    display: block;
 }
 
-/* CSS basic rules for no products */
-.no-products {
-    color: red;
-    font-weight: bold;
+.add-to-basket {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 /* Legendary Products styling */
