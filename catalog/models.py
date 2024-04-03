@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
 
 # Category model, allowing for the creation of categories for products
 class Category(models.Model):
@@ -63,3 +66,22 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return self.title  # return the message title
+
+class catalog_purchase(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    purchase_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Purchase {self.id} by {self.user.username}'
+
+@receiver(post_save, sender=catalog_purchase)
+def send_admin_email_on_purchase(sender, instance, created, **kwargs):
+    if created:  # only for new purchases
+        subject = 'A new purchase has been made'
+        message = f'Purchase ID: {instance.id}, User: {instance.user.username}, Total: {instance.total}'
+        from_email = 'chefjoemiller1992@gmail.com'  # replace with your email
+        to_email = ['chefjoemiller1992@gmail.com']  # replace with admin email
+
+        send_mail(subject, message, from_email, to_email)
