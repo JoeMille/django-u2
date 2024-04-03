@@ -73,6 +73,10 @@ def logout(request):
     auth_logout(request)
     return redirect('index')
 
+# About page view
+def about(request):
+    return render(request, 'catalog/about.html')
+
 # Products page view
 
 def products(request):

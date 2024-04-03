@@ -334,6 +334,18 @@ body {
         display: none; 
     }
 }
+/* Styling for the about page */
+.about-page-content {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: rgb(68, 37, 117);
+    padding: 20px;
+    margin: 0 auto;
+    width: 75%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+}
 
 /* styling for register page */
 
