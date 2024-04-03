@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
 body {
@@ -132,48 +132,19 @@ body {
         right: auto;
     }
 }
-
-/* Index about styling */
-.index-about-section {
-    background-color: white;
-    font-family: 'Lobster', cursive;
-    padding: 20px;
-    margin-left: auto;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    width: 70%;
-    border-radius: 5px;
-    border: 1px solid #000;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* This adds a shadow to the border */
-}
-
-.index-about-section img {
-    width: 100px; /* adjust this value to get the thumbnail size you want */
-    height: auto;
-    align-items: center;
-    display: block;
-    justify-content: center;
-
-}
-
-.index-about-section h2 {
-    font-family: "Rubik Scribble", sans-serif;
-}
-
 /* index page welcome */
 
 .index-page-welcome {
-    font-family: "Lobster", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: white;
     text-align: center;
     background-color: rgb(68, 37, 117);
     max-width: 250px;
     border-radius: 5px;
     padding: 10px;
-    top: 400px; /* adjust as needed */
     left: 1vw; 
     z-index: 3;
-    margin-top: -400px;
+    margin-top: 40px;
     margin-bottom: 50px;
 }
 
@@ -187,17 +158,16 @@ body {
 /* User Greeting styling */
 
 .user-greeting {
-    font-family: "Lobster", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: white;
     text-align: center;
     background-color: rgb(68, 37, 117);
-    max-width: 180px;
+    max-width: 250px;
     border-radius: 5px;
     padding: 10px;
-    top: 400px;
     left: 1vw; 
     z-index: 3;
-    margin-top: -350px;
+    margin-top: 40px;
     margin-bottom: 50px;
 }
 /* CSS for mobile and small devices */
@@ -209,14 +179,50 @@ body {
     }
 }
 
+
+/* Index about styling */
+.index-about-section {
+    background-color:  rgb(68, 37, 117);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    margin-left: auto;
+    margin-top: -200px;
+    margin-bottom: 75px; /* Increase the bottom margin */
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.index-about-section img {
+    width: 100px; /* adjust this value to get the thumbnail size you want */
+    height: auto;
+    align-items: center;
+    display: block;
+    justify-content: center;
+
+}
+
+.index-about-section h2 {
+    font-family: "Rubik Scribble", sans-serif;
+    color: white;
+}
+
+
 /* image carousel styling */
+.carousel-container {
+    max-width: 100%; /* Ensure the container never goes past the width of the page */
+    overflow: hidden; /* Hide any content that overflows the container */
+}
 
 .carousel {
     width: 100%;
     max-height: 400px;
     overflow: hidden;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 75px;
+    margin-top: 75px; /* You can also add a top margin here if needed */
+    clear: both;
 }
 
 .carousel__track {
@@ -245,10 +251,10 @@ body {
 /* index about author section styling */
 .index-author-profile {
     width: 75%;
-    font-family: "Lobster", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
-    background-color: white;
-    color: black;
+    background-color: rgb(16, 12, 36);
+    color: white;
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 20px;
