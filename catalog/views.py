@@ -3,7 +3,7 @@ import stripe
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
@@ -107,6 +107,11 @@ def charge(request):
     if request.method == 'POST':
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
+        if 'stripeToken' not in request.POST:
+            # Handle the case where stripeToken is not provided
+            # Maybe return an HTTP 400 status or a custom error message
+            return HttpResponseBadRequest("Bad Request: No stripeToken field provided")
+
         token = request.POST['stripeToken']
 
         charge =  stripe.Charge.create(
@@ -117,7 +122,6 @@ def charge(request):
         )
 
         return render(request, 'catalog/charge.html')
-
 # Reviews page view
 
 def reviews(request):

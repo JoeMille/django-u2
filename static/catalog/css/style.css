@@ -18,7 +18,7 @@ body {
     background-image: url('../images/site-banner.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 250px;
+    height: 300px;
     font-family: "Lobster", sans-serif;
     font-weight: bold; 
     font-style: normal;
@@ -122,6 +122,7 @@ body {
 }
 
 .basket-info p {
+    font-family: 'Roboto', sans-serif;
     margin: 0 0 10px;
 }
 
@@ -294,7 +295,7 @@ body {
 /* Featured Products Index Page Window */
 
 .featured-products {
-    font-family: "Lobster", sans-serif;
+    font-family: 'Roboto', sans-serif;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -364,12 +365,12 @@ body {
     font-size: 30px;
     text-align: center;
     padding: 5px; 
-    height: auto; /* let the height adjust to the content */
-    max-width: 50%; /* make it 600px wide */
+    height: auto; 
+    max-width: 50%; 
     border-radius: 5px;
-    margin: 0 auto; /* center the element */
-    display: block; /* make sure the element is block-level */
-    overflow: auto; /* handle text spilling over */
+    margin: 0 auto; 
+    display: block; 
+    overflow: auto; 
     margin-top: 10px;
     opacity: 0.9;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
@@ -377,8 +378,8 @@ body {
 
 .product-page-title p {
     font-family: "Roboto", sans-serif;
-    margin: 0; /* remove default paragraph margins */
-    padding: 0; /* remove default paragraph padding */
+    margin: 0; 
+    padding: 0; 
 }
 
 .product-page-welcome {
@@ -389,8 +390,8 @@ body {
     max-width: 600px;
     border-radius: 5px;
     padding: 10px;
-    margin: 0 auto; /* center the element */
-    display: block; /* make sure the element is block-level */
+    margin: 0 auto; 
+    display: block; 
 }
 
 .category-title {
@@ -478,43 +479,6 @@ body {
     text-decoration: none;
 }
 
-/* Legendary Products styling */
-.limited-products-title {
-    margin-top: 50px;
-    font-family: "Lobster", sans-serif;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    padding: 10px;
-    background-size: cover; ;
-    background-repeat: no-repeat;
-}
-
-.limited-products {
-    font-family: "Lobster", sans-serif;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-height: 400px;
-    overflow-y: auto;
-    z-index: 4;
-}
-
-.limited-products .limited-product {
-    background-color: white;
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: calc(20% - 20px); 
-    height: 400px;
-    overflow: auto;
-}
-
-.limited-products img {
-    width: 200px; 
-    height: auto;
-}
 /* CSS for mobile and small screen devices */
 @media only screen and (max-width: 480px) {
     .legendary-products {
@@ -533,7 +497,7 @@ body {
 /* Styling for the further information section of index page */
 
 .further-info {
-    font-family: "Lobster", sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: rgb(20, 23, 49);
     margin: 40px auto;
@@ -550,7 +514,7 @@ body {
 /* Contact form styling */
 
 .site-contact-form {
-    font-family: "Lobster", sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: rgb(16, 10, 44);
     padding: 20px;
@@ -610,7 +574,7 @@ body {
 /* Styling for the Reviews page */
 
 .review-page-title {
-    font-family: "Lobster", sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -620,7 +584,7 @@ body {
 }
 
 .review-form {
-    font-family: "Lobster", sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-left: 50px;
     background-color: #f0f0f0;
     width: 35%; 
@@ -637,7 +601,7 @@ body {
 /* Styling for the Submitted User Reviews */
 
 .product-reviews {
-    font-family: "Lobster", sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
     padding-left: 50px;
     padding-top: 20px;
@@ -649,7 +613,7 @@ body {
 }
 
 .product-reviews img {
-    width: 400px;  
+    width: 200px;  
     height: auto;  
     display: block;  
     margin: 0 auto;  
