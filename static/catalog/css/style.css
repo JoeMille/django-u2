@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body {
     background-color: rgb(88, 72, 112);
@@ -358,8 +358,8 @@ body {
 /* Styling for the product page */
 
 .product-page-title {
-    font-family: "Rubik Scribble", sans-serif;
-    background-color: #0f0736;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;    background-color: #0f0736;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -370,6 +370,9 @@ body {
     margin: 0 auto; /* center the element */
     display: block; /* make sure the element is block-level */
     overflow: auto; /* handle text spilling over */
+    margin-top: 10px;
+    opacity: 0.9;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 .product-page-title p {
@@ -391,7 +394,8 @@ body {
 }
 
 .category-title {
-    font-family: "Rubik Scribble", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;    background-color: #0f0736;
     font-size: 50px;
     text-align: center;
     color: white;
@@ -420,6 +424,9 @@ body {
     box-sizing: border-box;
     border-radius: 5px;
     text-align: center;
+    display: flex; /* Add this line */
+    flex-direction: column; /* Add this line */
+    justify-content: space-between; /* Add this line */
 }
 
 .product-item img {
@@ -431,22 +438,27 @@ body {
     margin: 10px 0;
 }
 
+.product-item form {
+    margin-top: auto;
+    width: 100%; /* Add this line if the form is not taking the full width */
+}
+
 /* Product Pop-Up styles */
 
 .popup-description {
     display: none;
     position: absolute;
-    background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient background */
+    background: linear-gradient(to right, #0e254f, #1f3863); /* Gradient background */
     color: white;
     padding: 15px; /* Increased padding */
     line-height: 1.5; /* Increased line height */
     border-radius: 5px;
     width: 300px;
-    max-height: 500px;
+    max-height: 300px;
     overflow-y: auto;
-    top: 0;
+    top: -10px;
     left: 20px;
-    box-shadow: 0px 10px 20px 10px rgba(0,0,0,0.2); /* Increased box shadow */
+    box-shadow: 0px 10px 20px 10px rgba(29, 25, 42, 0.2); /* Increased box shadow */
     z-index: 1;
     font-family: 'Arial', sans-serif; /* Change as needed */
     opacity: 0.9;
