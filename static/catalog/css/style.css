@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
 
 
+
 body {
     background-color: rgb(88, 72, 112);
     margin: 0;
@@ -155,6 +156,10 @@ body {
 
 }
 
+.index-about-section h2 {
+    font-family: "Rubik Scribble", sans-serif;
+}
+
 /* index page welcome */
 
 .index-page-welcome {
@@ -172,6 +177,13 @@ body {
     margin-bottom: 50px;
 }
 
+.index-page-welcome h2 {
+    font-family: "Rubik Scribble", sans-serif;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
 /* User Greeting styling */
 
 .user-greeting {
@@ -182,7 +194,7 @@ body {
     max-width: 180px;
     border-radius: 5px;
     padding: 10px;
-    top: 400px; /* adjust as needed */
+    top: 400px;
     left: 1vw; 
     z-index: 3;
     margin-top: -350px;
@@ -233,13 +245,16 @@ body {
 /* index about author section styling */
 .index-author-profile {
     width: 75%;
-    font-family: 'Lobster', cursive;
-    background-color: rgb(68, 37, 117);
-    color: white;
-    margin: auto;
+    font-family: "Lobster", sans-serif;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    margin-top: 50px;
+    margin-bottom: 50px;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* This adds a shadow to the border */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9); 
+    opacity: 0.9;
 }
 
 .index-author-profile img {
@@ -250,18 +265,67 @@ body {
 /* featured product styling */
 
 .featured-product-title {
-    background-color: rgb(68, 37, 117);
-    font-family: "Lobster", sans-serif;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    padding: 10px;
-    background-size: cover; ;
-    background-repeat: no-repeat;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
+    font-family: "Rubik Scribble", sans-serif;
+    max-width: 800px; 
+    background-color: rgb(30, 15, 50); 
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9); 
 }
 
+.featured-product-title p, .featured-product-title h2 {
+    font-family: "Rubik Scribble", sans-serif;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Featured Products Index Page Window */
+
+.featured-products {
+    font-family: "Lobster", sans-serif;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 4;
+}
+
+
+.featured-products .product {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); 
+    height: 400px;
+    overflow: auto;
+}
+
+.featured-products img {
+    width: 200px; 
+    height: auto;
+}
+
+/* CSS for mobile and small devices displaying the top 2 features*/
+@media only screen and (max-width: 480px) {
+    .featured-products {
+        justify-content: flex-start; 
+    }
+    .featured-products .product {
+        width: 50%; 
+        box-sizing: border-box; 
+    }
+    .featured-products .product:nth-child(n+3) {
+        display: none; 
+    }
+}
 
 /* styling for register page */
 
@@ -348,57 +412,6 @@ body {
     font-weight: bold;
 }
 
-/* Featured products styling */
-
-.featured-product-title {
-    font-family: "Lobster", sans-serif;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    padding: 10px;
-    background-size: cover; ;
-    background-repeat: no-repeat;
-}
-
-.featured-products {
-    font-family: "Lobster", sans-serif;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-height: 400px;
-    overflow-y: auto;
-    z-index: 4;
-}
-
-
-.featured-products .product {
-    background-color: white;
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: calc(20% - 20px); 
-    height: 400px;
-    overflow: auto;
-}
-
-.featured-products img {
-    width: 200px; 
-    height: auto;
-}
-/* CSS for mobile and small devices displaying the top 2 features*/
-@media only screen and (max-width: 480px) {
-    .featured-products {
-        justify-content: flex-start; 
-    }
-    .featured-products .product {
-        width: 50%; 
-        box-sizing: border-box; 
-    }
-    .featured-products .product:nth-child(n+3) {
-        display: none; 
-    }
-}
 /* Legendary Products styling */
 .limited-products-title {
     margin-top: 50px;
@@ -455,7 +468,8 @@ body {
 
 .further-info {
     font-family: "Lobster", sans-serif;
-    background-color: white;
+    color: white;
+    background-color: rgb(20, 23, 49);
     margin: 40px auto;
     padding: 20px;
     width: 50%;
@@ -471,10 +485,11 @@ body {
 
 .site-contact-form {
     font-family: "Lobster", sans-serif;
-    background-color: white;
+    color: white;
+    background-color: rgb(16, 10, 44);
     padding: 20px;
     margin: 0 auto;
-    width: 33%;
+    width: 50%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     align-items: center;
     justify-content: center;

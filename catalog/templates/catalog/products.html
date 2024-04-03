@@ -6,13 +6,10 @@
     <h2>Browse Below a Selection of Our Products</h2>
 </div>
 
-{% for Category in categories %}
-<h2 class="product-category-title">{{ Category.name }}</h2> 
 <div class="product-list">
-    {% for product in Category.products %}
+    {% for product in products %}
     <div class="product-item">
         <h2 class="product-title">{{ product.title }}</h2>
-        <p class="product-category">Category: {{ Category.name }}</p>
         <img class="product-image" src="{{ product.image.url }}" alt="{{ product.title }}">
         <p class="product-description">{{ product.description }}</p>
         <p class="product-price">Price: {{ product.price }}</p>
@@ -23,9 +20,8 @@
         </form>
     </div>
     {% empty %}
-    <p class="no-products">No products available in this category.</p>
+    <p class="no-products">No products available at this time.</p>
     {% endfor %}
 </div>
-{% endfor %}
 
 {% endblock %}

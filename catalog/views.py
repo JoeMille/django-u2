@@ -74,12 +74,10 @@ def logout(request):
     return redirect('index')
 
 # Products page view
-def products(request):
-    categories = Category.objects.prefetch_related(
-        Prefetch('product_set', queryset=Product.objects.all(), to_attr='products')
-    )
-    return render(request, 'catalog/products.html', {'categories': categories})
 
+def products(request):
+    products = Product.objects.all()
+    return render(request, 'catalog/products.html', {'products': products})
 
 # Checkout page view
 def checkout(request):

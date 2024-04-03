@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation bar -->
     <section class="site-nav">
         <nav>
             <ul>
@@ -25,10 +26,11 @@
             </ul>
         </nav>
     </section>
-    <!-- Content of the page -->
+    <!-- Content of the base page -->
+    <!-- Site header -->
     <div class="site-header"></div>
     
-
+    <!-- Basket info -->
     <div class="basket-info">
         {% if basket %}
             <p>User: {{ request.user.username }}</p>
