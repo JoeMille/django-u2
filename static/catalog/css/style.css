@@ -337,6 +337,7 @@ body {
 /* Styling for the about page */
 .about-page-content {
     font-family: 'Roboto', sans-serif;
+    text-align: center;
     color: white;
     background-color: rgb(68, 37, 117);
     padding: 20px;
@@ -758,7 +759,46 @@ body {
 }
 
 
+/* Styling for the footer page */
+
+.site-footer {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: white; 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: rgb(60, 40, 161);
+    text-align: center;
+    opacity: 0.9;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 5px;
+    flex-direction: column;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+}
+
 .site-footer a {
-    margin-right: 10px; 
-    margin-left: 10px; 
+    flex-grow: 1;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    text-align: center; /* to center the text inside each link */
+}
+
+.site-footer a:hover {
+    background-color: #6031cf; /* Change the background color when hovering */
+    color: #fff; /* Change the text color when hovering */
+}
+
+.site-footer p {
+    text-align: center; 
+    padding: 5px;
 }

@@ -18,8 +18,8 @@
             <ul>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
                 <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
                 <li><a href="{% url 'reviews' %}">Reviews</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'checkout' %}">Checkout</a></li>
@@ -47,10 +47,20 @@
     {% endblock %}
 
     <footer class="site-footer">
-        <a href="https://github.com" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i> Twitter</a>
-        <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i> Facebook</a>
-        <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
+        <div class="footer-links">
+            <a href="https://www.theministryofdog.com/" target="_blank">
+                <i class="fas fa-dog"></i> The Ministry of Dog
+            </a>
+            <a href="https://www.frankieandandysplace.org/" target="_blank">
+                <i class="fas fa-paw"></i> Frankie and Andy's Place
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
     </footer>
 
 <!-- ... -->
