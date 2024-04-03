@@ -76,8 +76,9 @@ def logout(request):
 # Products page view
 
 def products(request):
-    products = Product.objects.all()
-    return render(request, 'catalog/products.html', {'products': products})
+    categories = Category.objects.all()
+    products_by_category = {category: Product.objects.filter(category=category) for category in categories}
+    return render(request, 'catalog/products.html', {'products_by_category': products_by_category})
 
 # Checkout page view
 def checkout(request):

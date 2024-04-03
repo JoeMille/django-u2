@@ -6,22 +6,25 @@
     <h2>Browse Below a Selection of Our Products</h2>
 </div>
 
-<div class="product-list">
-    {% for product in products %}
-    <div class="product-item">
-        <h2 class="product-title">{{ product.title }}</h2>
-        <img class="product-image" src="{{ product.image.url }}" alt="{{ product.title }}">
-        <p class="product-description">{{ product.description }}</p>
-        <p class="product-price">Price: {{ product.price }}</p>
-        <form method="post" action="{% url 'add_to_basket' product.id %}">
-            {% csrf_token %}
-            <input type="hidden" name="product_id" value="{{ product.id }}">
-            <button type="submit" class="add-to-basket">Add to Basket</button>
-        </form>
+{% for category, products in products_by_category.items %}
+    <h2 class="category-title">{{ category.name }}</h2>
+    <div class="product-list">
+        {% for product in products %}
+        <div class="product-item">
+            <h2 class="product-title">{{ product.title }}</h2>
+            <img class="product-image" src="{{ product.image.url }}" alt="{{ product.title }}">
+            <p class="product-description">{{ product.description }}</p>
+            <p class="product-price">Price: {{ product.price }}</p>
+            <form method="post" action="{% url 'add_to_basket' product.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <button type="submit" class="add-to-basket">Add to Basket</button>
+            </form>
+        </div>
+        {% empty %}
+        <p class="no-products">No products available in this category.</p>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p class="no-products">No products available at this time.</p>
-    {% endfor %}
-</div>
+{% endfor %}
 
 {% endblock %}

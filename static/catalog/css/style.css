@@ -196,12 +196,10 @@ body {
 }
 
 .index-about-section img {
-    width: 100px; /* adjust this value to get the thumbnail size you want */
+    width: 150px; /* adjust this value to get the thumbnail size you want */
     height: auto;
-    align-items: center;
     display: block;
-    justify-content: center;
-
+    margin: auto; /* center the image */
 }
 
 .index-about-section h2 {
@@ -253,19 +251,22 @@ body {
     width: 75%;
     font-family: "Roboto", sans-serif;
     font-size: 20px;
-    background-color: rgb(16, 12, 36);
+    background-color:  rgb(68, 37, 117);
     color: white;
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9); 
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.9); /* Increase the blur radius and spread radius */
     opacity: 0.9;
 }
 
 .index-author-profile img {
-    height: 100px;
-    width: auto;
+    padding: 5px;
+    width: 300px; /* Increase the width */
+    height: auto;
+    display: block;
+    margin: auto; /* center the image */
 }
 
 /* featured product styling */
@@ -276,7 +277,7 @@ body {
     transform: translateX(-50%); 
     font-family: "Rubik Scribble", sans-serif;
     max-width: 800px; 
-    background-color: rgb(30, 15, 50); 
+    background-color:  rgb(68, 37, 117);
     border-radius: 5px;
     margin: 20px;
     padding: 20px; 
