@@ -3,7 +3,7 @@ import stripe
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
@@ -13,6 +13,7 @@ from django.db.models import Prefetch
 from django.core.mail import send_mail
 from .forms import ContactForm
 from .models import ContactMessage
+from django.contrib.auth.decorators import login_required
 
 # Index page view
 def index(request):
@@ -46,6 +47,7 @@ def index(request):
 
 
 # Add products to user basket
+@login_required
 def add_to_basket(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     basket, created = Basket.objects.get_or_create(user=request.user)
@@ -78,11 +80,15 @@ def about(request):
     return render(request, 'catalog/about.html')
 
 # Products page view
-
 def products(request):
-    categories = Category.objects.all()
-    products_by_category = {category: Product.objects.filter(category=category) for category in categories}
-    return render(request, 'catalog/products.html', {'products_by_category': products_by_category})
+    categories = Category.objects.prefetch_related(
+        Prefetch('product_set', queryset=Product.objects.all(), to_attr='products')
+    )
+    return render(request, 'catalog/products.html', {'categories': categories})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, 'catalog/product_detail.html', {'product': product})
 
 # Checkout page view
 def checkout(request):
@@ -111,11 +117,6 @@ def charge(request):
     if request.method == 'POST':
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
-        if 'stripeToken' not in request.POST:
-            # Handle the case where stripeToken is not provided
-            # Maybe return an HTTP 400 status or a custom error message
-            return HttpResponseBadRequest("Bad Request: No stripeToken field provided")
-
         token = request.POST['stripeToken']
 
         charge =  stripe.Charge.create(
@@ -126,6 +127,7 @@ def charge(request):
         )
 
         return render(request, 'catalog/charge.html')
+
 # Reviews page view
 
 def reviews(request):

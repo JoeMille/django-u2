@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.core.mail import send_mail
 
 # Category model, allowing for the creation of categories for products
 class Category(models.Model):
@@ -17,7 +14,10 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     title = models.CharField(max_length=200, default='Default Title')
     description = models.TextField()
-    second_description = models.TextField(null=True, blank=True)  # Add this line
+    description2 = models.TextField(default='Default Description')
+    image2 = models.ImageField(upload_to='products/', default='products/default.jpg')
+    image3 = models.ImageField(upload_to='products/', default='products/default.jpg')
+    image4 = models.ImageField(upload_to='products/', default='products/default.jpg')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
@@ -67,21 +67,14 @@ class ContactMessage(models.Model):
     def __str__(self):
         return self.title  # return the message title
 
-class catalog_purchase(models.Model):
+# Purchase model, allowing for the creation of a purchase with a user, product, quantity, and purchase_date field
+
+class CatalogPurchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     purchase_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Purchase {self.id} by {self.user.username}'
-
-@receiver(post_save, sender=catalog_purchase)
-def send_admin_email_on_purchase(sender, instance, created, **kwargs):
-    if created:  # only for new purchases
-        subject = 'A new purchase has been made'
-        message = f'Purchase ID: {instance.id}, User: {instance.user.username}, Total: {instance.total}'
-        from_email = 'chefjoemiller1992@gmail.com'  # replace with your email
-        to_email = ['chefjoemiller1992@gmail.com']  # replace with admin email
-
-        send_mail(subject, message, from_email, to_email)
+        return f'Purchase of {self.product.title} by {self.user.username}'
+        

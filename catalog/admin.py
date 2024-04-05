@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, catalog_purchase
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, CatalogPurchase
+
 
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ('title', 'email', 'message', 'created_at')  # fields to display in the list view
 
-@admin.register(catalog_purchase)
+@admin.register(CatalogPurchase)
 class PurchaseAdmin(admin.ModelAdmin):
     # your admin configuration here
     list_display = ['id', 'user', 'product', 'quantity', 'purchase_date']
