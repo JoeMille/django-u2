@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="product-detail-content">
+    <div class="product-detail-image-container">
+        <img class="product-detail-image" src="{{ product.image.url }}" alt="{{ product.title }}">
+    </div>
+    <h2 class="product-detail-title">{{ product.title }}</h2>
+    <p class="product-detail-category">Category: {{ product.category.name }}</p>
+    <p class="product-detail-description">{{ product.description }}</p>
+    <p class="product-detail-description2">{{ product.description2 }}</p> <!-- Second description -->
+    <p class="product-detail-price">Price: {{ product.price }}</p>
+    <div class="product-multi-img-container">
+        <img class="product-multi-img" src="{{ product.image2.url }}" alt="{{ product.title }}"> <!-- Second image -->
+        <img class="product-multi-img" src="{{ product.image3.url }}" alt="{{ product.title }}"> <!-- Third image -->
+        <img class="product-multi-img" src="{{ product.image4.url }}" alt="{{ product.title }}"> <!-- Fourth image -->
+    </div>
+    <form method="post" action="{% url 'add_to_basket' product.id %}">
+        {% csrf_token %}
+        <input type="submit" value="Add to Basket">
+    </form>
+
+{% endblock %}

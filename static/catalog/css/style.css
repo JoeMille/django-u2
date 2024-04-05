@@ -407,7 +407,7 @@ body {
     display: block; 
 }
 
-.category-title {
+.product-category-title {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;    background-color: #0f0736;
     font-size: 50px;
@@ -457,31 +457,6 @@ body {
     width: 100%; /* Add this line if the form is not taking the full width */
 }
 
-/* Product Pop-Up styles */
-
-.popup-description {
-    display: none;
-    position: absolute;
-    background: linear-gradient(to right, #0e254f, #1f3863); /* Gradient background */
-    color: white;
-    padding: 15px; /* Increased padding */
-    line-height: 1.5; /* Increased line height */
-    border-radius: 5px;
-    width: 300px;
-    max-height: 300px;
-    overflow-y: auto;
-    top: -10px;
-    left: 20px;
-    box-shadow: 0px 10px 20px 10px rgba(29, 25, 42, 0.2); /* Increased box shadow */
-    z-index: 1;
-    font-family: 'Arial', sans-serif; /* Change as needed */
-    opacity: 0.9;
-}
-
-.product-item:hover .popup-description {
-    display: block;
-}
-
 .add-to-basket {
     background-color: #333;
     color: white;
@@ -492,19 +467,44 @@ body {
     text-decoration: none;
 }
 
-/* CSS for mobile and small screen devices */
-@media only screen and (max-width: 480px) {
-    .legendary-products {
-        justify-content: center; 
-    }
-    .legendary-products .legendary-product {
-        width: 60%; 
-        box-sizing: border-box; 
-        margin-left: auto;
-    }
-    .legendary-products .legendary-product:nth-child(n+3) {
-        display: none; 
-    }
+
+/* PRODUCT_DETAIL PAGE STYLING */
+
+/* PRODUCT DETAIL styles */
+
+.product-detail-content {
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 80%;
+    height: auto;    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.product-detail-content img.product-detail-image {
+    width: 50%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+.product-detail-content .product-multi-img-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-detail-content img.product-multi-img {
+    width: 250px; 
+    height: 350px; 
+    display: block; 
+    margin: 0 auto; 
+    object-fit: cover; 
+}
+
+.product-detail-content form {
+    margin-top: 20px;
 }
 
 /* Styling for the further information section of index page */
@@ -734,10 +734,6 @@ body {
     }
 }
 /* Payment.html form styling */
-
-
-
-
 
 /* Payment Success (charge.html) styling */
 .payment-received-notice {
