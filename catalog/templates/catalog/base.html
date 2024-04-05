@@ -47,21 +47,45 @@
     {% endblock %}
 
     <footer class="site-footer">
-        <div class="footer-links">
-            <a href="https://www.theministryofdog.com/" target="_blank">
-                <i class="fas fa-dog"></i> The Ministry of Dog
-            </a>
-            <a href="https://www.frankieandandysplace.org/" target="_blank">
-                <i class="fas fa-paw"></i> Frankie and Andy's Place
-            </a>
-            <a href="https://www.facebook.com" target="_blank">
-                <i class="fab fa-facebook-f"></i> Facebook
-            </a>
-            <a href="https://www.instagram.com" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
+        <div class="footer-container">
+            <div class="middle-list">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'products' %}">Products</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'reviews' %}">Reviews</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                    {% endif %}
+            </div>
+            <div class="footer-links">
+                <a href="https://www.theministryofdog.com/" target="_blank">
+                    <i class="fas fa-dog"></i> The Ministry of Dog
+                </a>
+                <a href="https://www.frankieandandysplace.org/" target="_blank">
+                    <i class="fas fa-paw"></i> Frankie and Andy's Place
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+            
+            <div class="right-content">
+                <p>OUR STORY
+                    Many years ago we were captivated by a pair of beautiful amber eyes......the only trouble was, 
+                    they were attached to the naughtiest dog on the planet!
+                    Nelson, our sadly now deceased Weimaraner, was stunningly beautiful with his silver coat, 
+                    princely nose and soft ears, but he was also a hot stinking mess. High prey drive, no impulse control, 
+                    total scavenger, orally fixated, separation anxiety ridden, sex pest, burglar, serial escape artist.......
+                    who on earth would adore a dog like that?</p>
+            </div>
         </div>
-        <p>&copy; 2024 Titles Copyright Penny Miller</p>
+        <p>&copy; 2024 Titles, Content, Featured Content and Future Content Copyright Penny Miller</p>
     </footer>
 
 <!-- ... -->
