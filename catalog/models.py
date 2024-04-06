@@ -18,9 +18,31 @@ class Product(models.Model):
     image2 = models.ImageField(upload_to='products/', default='products/default.jpg')
     image3 = models.ImageField(upload_to='products/', default='products/default.jpg')
     image4 = models.ImageField(upload_to='products/', default='products/default.jpg')
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    image5 = models.ImageField(upload_to='products/', default='products/default.jpg')
+    image6 = models.ImageField(upload_to='products/', default='products/default.jpg')
+    price_paperback = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    price_hardback = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
+    BOOK_TYPES = [
+        ('PB', 'Paperback'),
+        ('HB', 'Hardback'),
+    ]
+    book_type = models.CharField(
+        max_length=2,
+        choices=BOOK_TYPES,
+        default='PB',
+    )
+
+    def get_price(self):
+        if self.book_type == 'PB':
+            return self.price_paperback
+        else:
+            return self.price_hardback
+
+    @property
+    def price(self):
+        return self.get_price()
 
     def __str__(self):
         return self.title

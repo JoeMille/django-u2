@@ -30,6 +30,16 @@ if (track) {
     }, 3000);
 }
 
+document.getElementById('edition').addEventListener('change', function() {
+    var price = document.getElementById('price');
+    var edition = document.getElementById('edition');
+    var selected = edition.options[edition.selectedIndex];
+    var selectedPrice = selected.getAttribute('data-price');
+
+    price.textContent = 'Price: ' + selectedPrice;
+});
+
+
 // Stripe Js payment form 
 // To use this payment method live, you must switch to HTTPs to ensure secure data transfer
 

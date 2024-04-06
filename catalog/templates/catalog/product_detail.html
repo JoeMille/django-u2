@@ -8,16 +8,31 @@
     <h2 class="product-detail-title">{{ product.title }}</h2>
     <p class="product-detail-category">Category: {{ product.category.name }}</p>
     <p class="product-detail-description">{{ product.description }}</p>
-    <p class="product-detail-description2">{{ product.description2 }}</p> <!-- Second description -->
-    <p class="product-detail-price">Price: {{ product.price }}</p>
+    <p class="product-detail-description2">{{ product.description2 }}"></p> <!-- Second description -->
     <div class="product-multi-img-container">
         <img class="product-multi-img" src="{{ product.image2.url }}" alt="{{ product.title }}"> <!-- Second image -->
         <img class="product-multi-img" src="{{ product.image3.url }}" alt="{{ product.title }}"> <!-- Third image -->
-        <img class="product-multi-img" src="{{ product.image4.url }}" alt="{{ product.title }}"> <!-- Fourth image -->
+        <img class="product-multi-img" src="{{ product.image4.url }}" alt="{{ product.title }}">
+        <img class="product-multi-img" src="{{ product.image5.url }}" alt="{{ product.title }}">
+        <img class="product-multi-img" src="{{ product.image6.url }}" alt="{{ product.title }}">
     </div>
     <form method="post" action="{% url 'add_to_basket' product.id %}">
         {% csrf_token %}
+        <select id="book-type" name="book_type">
+            <option value="PB" data-price="{{ product.price_paperback }}">Paperback</option>
+            <option value="HB" data-price="{{ product.price_hardback }}">Hardback</option>
+        </select>
+        <p id="product-detail-price" class="product-detail-price">Price: {{ product.price }}</p>
         <input type="submit" value="Add to Basket">
     </form>
+</div>
+
+<script>
+    document.getElementById('book-type').addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex];
+        var price = selectedOption.getAttribute('data-price');
+        document.getElementById('product-detail-price').textContent = 'Price: ' + price;
+    });
+</script>
 
 {% endblock %}
