@@ -18,11 +18,11 @@
     </div>
     <form method="post" action="{% url 'add_to_basket' product.id %}">
         {% csrf_token %}
-        <select id="book-type" name="book_type">
+        <select id="book-type" name="book_type" class="edition-chooser">
             <option value="PB" data-price="{{ product.price_paperback }}">Paperback</option>
             <option value="HB" data-price="{{ product.price_hardback }}">Hardback</option>
         </select>
-        <p id="product-detail-price" class="product-detail-price">Price: {{ product.price }}</p>
+        <p id="product-detail-price" class="product-detail-price price-box">Price: {{ product.price }}</p>
         <input type="submit" value="Add to Basket">
     </form>
 </div>

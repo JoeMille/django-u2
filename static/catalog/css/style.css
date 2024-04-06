@@ -537,6 +537,17 @@ body {
     margin-top: 20px;
 }
 
+.edition-chooser {
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.price-box {
+    font-size: 1.5em;
+    border: 2px solid black;
+    padding: 10px;
+    width: fit-content;
+}
 /* Styling for the further information section of index page */
 
 .further-info {
