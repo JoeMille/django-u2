@@ -9,7 +9,7 @@ class ProductAdminForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ['category']
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
@@ -22,7 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
     def description2_truncated(self, obj):
         return obj.description2[:50]  # Truncate to 50 characters
     description2_truncated.short_description = 'Description 2'  # Column header
-    
+
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ('title', 'email', 'message', 'created_at')  # fields to display in the list view
 
