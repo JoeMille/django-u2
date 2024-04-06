@@ -1,20 +1,7 @@
+/* jshint esversion: 6 */
 
-// Header image pulsating effect
 
-// Header image pulsating effect
-const header = document.querySelector('.site-header');
-const featuredProducts = document.querySelector('.featured-products');
-let brightness = 1;
 
-setInterval(() => {
-    brightness = brightness === 1 ? 1.5 : 1;
-    if (header) {
-        header.style.filter = `brightness(${brightness})`;
-    }
-    if (featuredProducts) {
-        featuredProducts.style.filter = `brightness(${brightness})`;
-    }
-}, 2000);
 
 // index image carousel
 
@@ -100,7 +87,7 @@ window.onload = function() {
             }
         });
     }
-}
+};
 
 
 
