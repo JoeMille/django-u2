@@ -444,34 +444,28 @@ body {
     color: white;
     background-color: #0f0736;
     margin-top: 1em;
-    max-width: 450px; /* set max width */
-    margin: 1em auto; /* center the element */
-    display: block; /* make sure the element is block-level */
+    max-width: 450px;
+    margin: 1em auto; 
+    display: block; 
     border-radius: 5px;
 }
-
 .product-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 2em;
 }
 
 .product-item {
     position: relative;
     background-color: white;
     color: black;
-    width: calc(25% - 20px); /* four items per row, with 20px gap */
-    margin: 10px; /* creates a 20px gap between items */
+    width: 30%; /* three items per row */
+    margin-bottom: 20px; /* creates a gap between rows */
     padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
     text-align: center;
-    display: flex; /* Add this line */
-    flex-direction: column; /* Add this line */
-    justify-content: space-between; /* Add this line */
 }
-
 .product-item img {
     height: 200px; /* Adjust this value as needed */
     width: 100%; /* This will make the image take the full width of its container */
