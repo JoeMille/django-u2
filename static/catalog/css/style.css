@@ -424,7 +424,7 @@ body {
     font-family: "Roboto", sans-serif;
     color: white;
     text-align: center;
-    background-color: rgb(68, 37, 117);
+    background-color: rgb(16, 10, 44);
     max-width: 80%;
     border-radius: 5px;
     padding: 10px;
@@ -504,6 +504,7 @@ body {
     width: 50%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    opacity: 0.8;
 
 }
 

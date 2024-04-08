@@ -82,10 +82,10 @@ def about(request):
 # Products page view
 def products(request):
     categories = Category.objects.prefetch_related(
-        Prefetch('product_set', queryset=Product.objects.all(), to_attr='products')
+        Prefetch('product_set', queryset=Product.objects.all().order_by('id'), to_attr='products')
     )
     return render(request, 'catalog/products.html', {'categories': categories})
-
+# Product_detail view
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'catalog/product_detail.html', {'product': product})
