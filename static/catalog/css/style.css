@@ -459,13 +459,17 @@ body {
     position: relative;
     background-color: white;
     color: black;
-    width: 30%; /* three items per row */
+    width: 25%; /* three items per row */
     margin-bottom: 20px; /* creates a gap between rows */
     padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
     text-align: center;
+    border: 2px solid #000000;
+    display: flex; /* Add this line */
+    flex-direction: column; /* Add this line */
 }
+
 .product-item img {
     height: 200px; /* Adjust this value as needed */
     width: 100%; /* This will make the image take the full width of its container */
@@ -477,8 +481,8 @@ body {
 }
 
 .product-item form {
-    margin-top: auto;
-    width: 100%; /* Add this line if the form is not taking the full width */
+    margin-top: auto; /* Add this line */
+    width: 100%;
 }
 
 .add-to-basket {
@@ -489,6 +493,18 @@ body {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+}
+
+.amazon-link {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: rgb(16, 10, 44);
+    margin: 40px auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
 }
 
 

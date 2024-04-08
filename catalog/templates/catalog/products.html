@@ -4,10 +4,6 @@
 {% block title %}Products{% endblock %}
 
 {% block content %}
-<div class="product-page-title">
-    <h1>Products</h1>
-    <p>Choose from Penny's range of releasess...</p>
-</div>
 
 <div class="product-page-disclaimer">
     <h2>This is the bit I have to say so you don’t sue me… I am not a veterinarian.</h2>
@@ -35,7 +31,7 @@
             <p class="product-category">Category: {{ Category.name }}</p>
             <img class="product-image" src="{{ product.image.url }}" alt="{{ product.title }}">
             <p class="product-description">{{ product.description }}</p>
-            <p class="product-price">Price: {{ product.price }}</p>
+            
         </a>
         <form method="post" action="{% url 'add_to_basket' product.id %}">
             {% csrf_token %}
@@ -49,5 +45,12 @@
 </div>
 
 {% endfor %}
+
+<section class="products-amazon-link">
+    <div class="amazon-link">
+        <h2>Looking for more products?</h2>
+        <h3>All of Penny's titles in Kindle/e-Book variation can be purchased via our Amazon store</h3>
+        <a href="https://www.amazon.com" target="_blank"><i class="fab fa-amazon"></i> Visit our Amazon Store</a>
+</section>
 
 {% endblock %}
