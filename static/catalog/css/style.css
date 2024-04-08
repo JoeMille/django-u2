@@ -537,8 +537,8 @@ body {
 }
 
 .product-detail-content img.product-multi-img {
-    width: 250px; 
-    height: 350px; 
+    max-width: 200px; 
+    height: auto; 
     display: block; 
     margin: 0 auto; 
     object-fit: cover; 
