@@ -1,11 +1,27 @@
 {% extends 'catalog/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <section class="review-page-title">
     <h2>CHECK OUT SOME OF OUR REVIEWS COURTESY OF OUR FOLLOWERS</h2>
     <p>And feel free to leave a review of your favorite product!</p>
 </section>
+
+<!-- Image container -->
+<div class="review-image-container">
+    <img src="{% static 'catalog/images/review-1.png' %}" alt="Image 1">
+    <img src="{% static 'catalog/images/review-2.png' %}" alt="Image 2">
+    <img src="{% static 'catalog/images/review-3.png' %}" alt="Image 3">
+    <img src="{% static 'catalog/images/review-4.png' %}" alt="Image 4">
+    <img src="{% static 'catalog/images/review-5.png' %}" alt="Image 5">
+</div>
+
+<!-- Rest of your code -->
+
+
+
 
 <!-- Product review form -->
 <div class="review-form">

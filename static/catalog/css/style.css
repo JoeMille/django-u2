@@ -656,6 +656,22 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9); 
 }
 
+.review-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Add this line */
+    max-width: 600px;
+    margin: auto; /* Add this line */
+    gap: 20px;
+}
+
+.review-image-container img {
+    max-width: 700px; /* Add this line */
+    max-height: 300px; /* Add this line */
+    object-fit: cover;
+}
+
 .review-form {
     font-family: 'Roboto', sans-serif;
     padding: 10px;
