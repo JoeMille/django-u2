@@ -74,6 +74,60 @@ class BasketItem(models.Model):
 
 RATING_CHOICES = [(i, i) for i in range(1, 11)]
 
+# Order model, allowing for the creation of orders with a user, status, created_at, and updated_at field
+
+class Item(models.Model):
+    name = models.CharField(max_length=255, default='Default Name')
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.name
+
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+
+    PAYMENT_CHOICES = [
+        ('credit_card', 'Credit Card'),
+        ('debit_card', 'Debit Card'),
+        ('paypal', 'PayPal'),
+        # Add more payment types as needed
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='catalog_orders')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    house = models.CharField(max_length=255, default='Default House')
+    street = models.CharField(max_length=255, default='Default Street')
+    city = models.CharField(max_length=255, default='Default City')
+    county = models.CharField(max_length=255, default='Default County')
+    eircode = models.CharField(max_length=7, default='0000000')
+    payment_type = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='credit_card')
+    order_items = models.ManyToManyField(Item)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'Order {self.id}'
+
+# Defining the completed order model
+
+class CompletedOrder(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='completed_orders')
+    order_items = models.TextField()
+    address = models.CharField(max_length=255)
+    payment_type = models.CharField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'Completed Order {self.id} for {self.user.username}'
+
+
+
+
 # Review model, allowing for the creation of reviews for products
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

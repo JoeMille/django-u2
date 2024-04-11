@@ -12,7 +12,7 @@ from django.contrib.auth import logout as auth_logout
 from django.db.models import Prefetch
 from django.core.mail import send_mail
 from .forms import ContactForm
-from .models import ContactMessage, Sale, Product, Sale
+from .models import ContactMessage, Sale, Product, Sale, Order
 from django.contrib.auth.decorators import login_required
 
 # Index page view
@@ -112,34 +112,37 @@ def payment(request):
     return render(request, 'catalog/payment.html')
 
 # Stripe payment view
-@login_required
+# Payment page view
+@csrf_exempt
 def charge(request):
     if request.method == 'POST':
-        # Get the product and delivery address from the request
-        product_ids = request.POST.getlist('product_id')
-        house = request.POST.get('house')
-        street = request.POST.get('street')
-        city = request.POST.get('city')
-        county = request.POST.get('county')
-        eircode = request.POST.get('eircode')
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        token = request.POST['stripeToken']
 
-        # Check if all address fields are provided
-        if not all([house, street, city, county, eircode]):
-            return HttpResponse("All address fields are required.")
+        # Create Order object
+        try:
+            order = Order.objects.create(
+                user=request.user,
+                # Add other necessary fields here
+            )
+        except Exception as e:
+            return HttpResponse(f'Error: {str(e)}', status=400)
 
-        # Concatenate address fields to form the delivery_address
-        delivery_address = f"{house}, {street}, {city}, {county}, {eircode}"
+        # Create Stripe charge
+        try:
+            charge =  stripe.Charge.create(
+                amount=1000,
+                currency='usd',
+                description='Example charge',
+                source=token,
+            )
+        except InvalidRequestError as e:
+            return HttpResponse(f'Error: {str(e)}', status=400)
 
-        # Create a new Sale object for each product and save it to the database
-        for product_id in product_ids:
-            product = get_object_or_404(Product, id=product_id)
-            sale = Sale(product=product, delivery_address=delivery_address, user=request.user)
-            sale.save()
+        # Redirect to a "payment complete" page after a successful charge
+        return redirect('charge')
 
-        # Redirect to the 'charge.html' template
-        return render(request, 'catalog/charge.html')
-    else:
-        return HttpResponse("This is the charge view.")
+    return render(request, 'catalog/charge.html')
 
 # Reviews page view
 def reviews(request):

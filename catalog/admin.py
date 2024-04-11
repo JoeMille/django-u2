@@ -1,42 +1,32 @@
 from django import forms
-from django.db import models
 from django.contrib import admin
-from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, CatalogPurchase, Sale
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Order  # Add Order to the import statement
 
 class ProductAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}))
-    description2 = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}))
+    description2 = forms.CharField(widget=forms.TextInput)
 
     class Meta:
         model = Product
-        exclude = ['category']
+        fields = '__all__'
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ('id', 'title', 'description_truncated', 'description2_truncated', 'price_paperback', 'price_hardback', 'image', 'image2', 'image3', 'image4', 'image5', 'image6')
+    list_display = ['title', 'category', 'image', 'description', 'price', 'short_description2', 'image2', 'image3', 'image4']
 
-    def description_truncated(self, obj):
-        return obj.description[:50]  # Truncate to 50 characters
-    description_truncated.short_description = 'Description'  # Column header
-
-    def description2_truncated(self, obj):
+    def short_description2(self, obj):
         return obj.description2[:50]  # Truncate to 50 characters
-    description2_truncated.short_description = 'Description 2'  # Column header
+    short_description2.short_description = 'Description 2'  # Column header
 
-class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'email', 'message', 'created_at')  # fields to display in the list view
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'status', 'created_at', 'updated_at', 'display_order_items')
 
-@admin.register(CatalogPurchase)
-class PurchaseAdmin(admin.ModelAdmin):
-    # your admin configuration here
-    list_display = ['id', 'user', 'product', 'quantity', 'purchase_date']
+    def display_order_items(self, obj):
+        return ", ".join([item.name for item in obj.order_items.all()])
+    display_order_items.short_description = 'Order Items'
 
-@admin.register(Sale)
-class SaleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'product', 'delivery_address']
-
-admin.site.register(ContactMessage, ContactMessageAdmin)  # register ContactMessageAdmin with ContactMessage
+admin.site.register(ContactMessage)  # register ContactMessage without a custom admin
 admin.site.register(Category)
 admin.site.register(Product, ProductAdmin)  # register ProductAdmin with Product
-admin.site.site_header = 'Cosmic Commerce Admin Portal'
+admin.site.register(Order, OrderAdmin)  # register OrderAdmin with Order
+admin.site.site_header = 'Penny Miller Books Administration'
 admin.site.site_title = 'Admin Operations'
