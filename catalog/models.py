@@ -106,6 +106,7 @@ class Order(models.Model):
     eircode = models.CharField(max_length=7, default='0000000')
     payment_type = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='credit_card')
     order_items = models.ManyToManyField(Item)
+    total_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -119,6 +120,7 @@ class CompletedOrder(models.Model):
     order_items = models.TextField()
     address = models.CharField(max_length=255)
     payment_type = models.CharField(max_length=20)
+    total_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

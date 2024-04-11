@@ -46,17 +46,6 @@ def index(request):
     return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products, 'legendary_products': legendary_products, 'contact_form': contact_form})
 
 
-# Add products to user basket
-@login_required
-def add_to_basket(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
-    basket, created = Basket.objects.get_or_create(user=request.user)
-    basket_item, created = BasketItem.objects.get_or_create(product=product, basket=basket)
-    if not created:
-        basket_item.quantity += 1
-        basket_item.save()
-    return redirect('products')
-
 # User Registration View
 def register(request):
     if request.method == 'POST':
@@ -85,6 +74,7 @@ def products(request):
         Prefetch('product_set', queryset=Product.objects.all().order_by('id'), to_attr='products')
     )
     return render(request, 'catalog/products.html', {'categories': categories})
+
 # Product_detail view
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -100,6 +90,17 @@ def checkout(request):
     else:
         return redirect('login')
 
+# Add products to user basket
+@login_required
+def add_to_basket(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    basket, created = Basket.objects.get_or_create(user=request.user)
+    basket_item, created = BasketItem.objects.get_or_create(product=product, basket=basket)
+    if not created:
+        basket_item.quantity += 1
+        basket_item.save()
+    return redirect('products')
+
 # Remove items from checkout basket 
 def remove_from_basket(request, item_id):
     if request.method == 'POST':
@@ -110,19 +111,30 @@ def remove_from_basket(request, item_id):
 # Payment page view
 def payment(request):
     return render(request, 'catalog/payment.html')
-
+    
 # Stripe payment view
-# Payment page view
 @csrf_exempt
 def charge(request):
     if request.method == 'POST':
         stripe.api_key = settings.STRIPE_SECRET_KEY
         token = request.POST['stripeToken']
 
+        # Get the user's basket
+        basket, created = Basket.objects.get_or_create(user=request.user)
+
+        # Calculate the total cost of the items in the basket
+        total_cost = 0
+        for item in basket.basketitem_set.all():
+            total_cost += item.product.price * item.quantity
+
+        # Convert total_cost to pence (or the smallest currency unit)
+        total_cost = int(total_cost * 100)
+
         # Create Order object
         try:
             order = Order.objects.create(
                 user=request.user,
+                total_cost=total_cost/100,  # Add the total cost here
                 # Add other necessary fields here
             )
         except Exception as e:
@@ -131,8 +143,8 @@ def charge(request):
         # Create Stripe charge
         try:
             charge =  stripe.Charge.create(
-                amount=1000,
-                currency='usd',
+                amount=total_cost,  # Pass the total cost here
+                currency='gbp',
                 description='Example charge',
                 source=token,
             )
