@@ -1,7 +1,7 @@
 from django import forms
 from django.db import models
 from django.contrib import admin
-from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, CatalogPurchase
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, CatalogPurchase, Sale
 
 class ProductAdminForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}))
@@ -30,6 +30,10 @@ class ContactMessageAdmin(admin.ModelAdmin):
 class PurchaseAdmin(admin.ModelAdmin):
     # your admin configuration here
     list_display = ['id', 'user', 'product', 'quantity', 'purchase_date']
+
+@admin.register(Sale)
+class SaleAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'product', 'delivery_address']
 
 admin.site.register(ContactMessage, ContactMessageAdmin)  # register ContactMessageAdmin with ContactMessage
 admin.site.register(Category)

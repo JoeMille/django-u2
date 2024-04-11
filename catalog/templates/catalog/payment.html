@@ -15,6 +15,7 @@
 
 
 <!-- Checkout Basket -->
+<!-- Checkout Basket -->
 <div class="checkout-basket">
     <h2>Checkout</h2>
     <ul>
@@ -33,62 +34,63 @@
         {% endfor %}
     </ul>
     <p>Total price: {{ basket.get_total_price }}</p>
-        
-        <!-- Address Fields -->
-        <div class="form-row">
-            <label for="house">
-                House Number/Name
-            </label>
-            <input type="text" id="house" name="house" required>
-        </div>
-        
-        <div class="form-row">
-            <label for="street">
-                Street
-            </label>
-            <input type="text" id="street" name="street" required>
-        </div>
-        
-        <div class="form-row">
-            <label for="city">
-                Town/City
-            </label>
-            <input type="text" id="city" name="city" required>
-        </div>
-        
-        <div class="form-row">
-            <label for="county">
-                County
-            </label>
-            <input type="text" id="county" name="county" required>
-        </div>
-        
-        <div class="form-row">
-            <label for="eircode">
-                Eircode
-            </label>
-            <input type="text" id="eircode" name="eircode" pattern="^[A-Za-z0-9]{7}$" title="Please enter a valid Eircode" required>
-        </div>
-            
 
-    <!-- Payment Form -->
-    <form action="{% url 'charge' %}" method="post" id="payment-form">
-        {% csrf_token %}
-        <div class="form-row">
-            <label for="card-element">
-                Credit or debit card
-            </label>
-            <div id="card-element">
-            </div>
-
-            <!-- In case of payment form errors. -->
-            <div id="card-errors" role="alert"></div>
-        </div>
-
-        <!-- Submit Payment Button -->
-        <button type="submit">Submit Payment</button>
-    </form>
+        
+<!-- Payment Form -->
+<form action="{% url 'charge' %}" method="post" id="payment-form">
+    {% csrf_token %}
     
+    <!-- Address Fields -->
+    <div class="form-row">
+        <label for="house">
+            House Number/Name
+        </label>
+        <input type="text" id="house" name="house" required>
+    </div>
+    
+    <div class="form-row">
+        <label for="street">
+            Street
+        </label>
+        <input type="text" id="street" name="street" required>
+    </div>
+    
+    <div class="form-row">
+        <label for="city">
+            Town/City
+        </label>
+        <input type="text" id="city" name="city" required>
+    </div>
+    
+    <div class="form-row">
+        <label for="county">
+            County
+        </label>
+        <input type="text" id="county" name="county" required>
+    </div>
+    
+    <div class="form-row">
+        <label for="eircode">
+            Eircode
+        </label>
+        <input type="text" id="eircode" name="eircode" pattern="^[A-Za-z0-9]{7}$" title="Please enter a valid Eircode" required>
+    </div>
+
+    <div class="form-row">
+        <label for="card-element">
+            Credit or debit card
+        </label>
+        <div id="card-element">
+        </div>
+
+        <!-- In case of payment form errors. -->
+        <div id="card-errors" role="alert"></div>
+    </div>
+
+    <!-- Submit Payment Button -->
+    <button type="submit">Submit Payment</button>
+</form>
+</div>   
     <!-- Stripe.js Library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>

@@ -47,6 +47,12 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+class Sale(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    delivery_address = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # Add any other fields you need
+
 # Basket model
 class Basket(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

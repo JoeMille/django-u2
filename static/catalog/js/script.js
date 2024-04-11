@@ -35,7 +35,7 @@ if (track) {
 // Stripe Js payment form 
 // To use this payment method live, you must switch to HTTPs to ensure secure data transfer
 
-var stripe = Stripe('pk_test_51Own3jFlpTEzDIrEWgl8A3ChU9v5tddxPbVh8VTxHJJHAXU0nzAVBRGGvap56gncNJuVudSf0uixGMrU77It6sUV00qCFkadDE');
+var stripe = Stripe('pk_test_51P4LyNHCmIgDEtnBy2hEb7X9DzH9cYRZuIR4S4YVbBhbx1rHHur3OacqKWXEpKBNyFSPBwae5Pj6pDubVbvouchd00rows7YUl');
 var elements = stripe.elements();
 
 var card = elements.create('card');
