@@ -13,7 +13,7 @@ from django.db.models import Prefetch
 from django.core.mail import send_mail
 from .forms import ContactForm
 from django.contrib.auth.decorators import login_required
-
+from stripe.error import InvalidRequestError
 
 # Index page view
 def index(request):
@@ -120,7 +120,9 @@ def charge(request):
         token = request.POST['stripeToken']
 
         # Get the user's basket
-        basket, created = Basket.objects.get_or_create(user=request.user)
+        basket = Basket.objects.filter(user=request.user).first()
+        if not basket:
+            return HttpResponse('No items in basket', status=400)
 
         # Calculate the total cost of the items in the basket
         total_cost = 0
@@ -129,6 +131,17 @@ def charge(request):
 
         # Convert total_cost to pence (or the smallest currency unit)
         total_cost = int(total_cost * 100)
+
+        # Create Stripe charge
+        try:
+            charge =  stripe.Charge.create(
+                amount=total_cost,  # Pass the total cost here
+                currency='gbp',
+                description='Example charge',
+                source=token,
+            )
+        except InvalidRequestError as e:
+            return HttpResponse(f'Error: {str(e)}', status=400)
 
         # Create Order object
         try:
@@ -147,28 +160,20 @@ def charge(request):
                     # Add other necessary fields here
                 )
 
+            # Clear the basket
+            basket.basketitem_set.all().delete()
+
         except Exception as e:
             return HttpResponse(f'Error: {str(e)}', status=400)
 
-        # Create Stripe charge
-        try:
-            charge =  stripe.Charge.create(
-                amount=total_cost,  # Pass the total cost here
-                currency='gbp',
-                description='Example charge',
-                source=token,
-            )
-        except InvalidRequestError as e:
-            return HttpResponse(f'Error: {str(e)}', status=400)
-
         # Redirect to a "payment complete" page after a successful charge
-        return redirect('charge')
+        return redirect('payment_complete')
 
     return render(request, 'catalog/charge.html')
 
 def create_order_item(request, product_id):
-    order = Order.objects.get(user=request.user)  # Replace with your actual Order
     product = get_object_or_404(Product, id=product_id)
+    order, created = Order.objects.get_or_create(user=request.user, status='pending', defaults={'total_cost': 0})
     order_item, created = OrderItem.objects.get_or_create(order=order, product=product, defaults={'quantity': 1})
     if not created:
         order_item.quantity += 1
