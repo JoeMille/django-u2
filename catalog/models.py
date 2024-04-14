@@ -109,15 +109,20 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'Order {self.id}'
+        order_items = ", ".join(str(order_item) for order_item in self.orderitem_set.all())
+        return f'Order {self.id} by {self.user.username}: {order_items}'
+
+def get_default_product():
+    return Product.objects.first().id
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default=get_default_product)
+    quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f'Order Item {self.id} for Order {self.order.id}'
+        return f'{self.quantity} of {self.product.title}'
+
 
 # Review model, allowing for the creation of reviews for products
 class Review(models.Model):

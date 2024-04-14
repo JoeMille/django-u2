@@ -7,13 +7,13 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
-from .models import Category, Product, Basket, BasketItem, Review 
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Sale, Order, OrderItem  # Add OrderItem here
 from django.contrib.auth import logout as auth_logout
 from django.db.models import Prefetch
 from django.core.mail import send_mail
 from .forms import ContactForm
-from .models import ContactMessage, Sale, Product, Sale, Order
 from django.contrib.auth.decorators import login_required
+
 
 # Index page view
 def index(request):
@@ -137,6 +137,16 @@ def charge(request):
                 total_cost=total_cost/100,  # Add the total cost here
                 # Add other necessary fields here
             )
+
+            # Create OrderItem objects for each item in the basket
+            for item in basket.basketitem_set.all():
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity,
+                    # Add other necessary fields here
+                )
+
         except Exception as e:
             return HttpResponse(f'Error: {str(e)}', status=400)
 
@@ -155,6 +165,15 @@ def charge(request):
         return redirect('charge')
 
     return render(request, 'catalog/charge.html')
+
+def create_order_item(request, product_id):
+    order = Order.objects.get(user=request.user)  # Replace with your actual Order
+    product = get_object_or_404(Product, id=product_id)
+    order_item, created = OrderItem.objects.get_or_create(order=order, product=product, defaults={'quantity': 1})
+    if not created:
+        order_item.quantity += 1
+        order_item.save()
+    return redirect('charge') 
 
 # Reviews page view
 def reviews(request):
