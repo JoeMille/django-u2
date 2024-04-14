@@ -75,7 +75,6 @@ class BasketItem(models.Model):
 RATING_CHOICES = [(i, i) for i in range(1, 11)]
 
 # Order model, allowing for the creation of orders with a user, status, created_at, and updated_at field
-
 class Item(models.Model):
     name = models.CharField(max_length=255, default='Default Name')
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -97,7 +96,7 @@ class Order(models.Model):
         # Add more payment types as needed
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='catalog_orders')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     house = models.CharField(max_length=255, default='Default House')
     street = models.CharField(max_length=255, default='Default Street')
@@ -105,7 +104,6 @@ class Order(models.Model):
     county = models.CharField(max_length=255, default='Default County')
     eircode = models.CharField(max_length=7, default='0000000')
     payment_type = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='credit_card')
-    order_items = models.ManyToManyField(Item)
     total_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -113,22 +111,13 @@ class Order(models.Model):
     def __str__(self):
         return f'Order {self.id}'
 
-# Defining the completed order model
-
-class CompletedOrder(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='completed_orders')
-    order_items = models.TextField()
-    address = models.CharField(max_length=255)
-    payment_type = models.CharField(max_length=20)
-    total_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
 
     def __str__(self):
-        return f'Completed Order {self.id} for {self.user.username}'
-
-
-
+        return f'Order Item {self.id} for Order {self.order.id}'
 
 # Review model, allowing for the creation of reviews for products
 class Review(models.Model):

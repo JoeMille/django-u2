@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Order  # Add Order to the import statement
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Order, OrderItem  # Add OrderItem to the import statement
 
 class ProductAdminForm(forms.ModelForm):
     description2 = forms.CharField(widget=forms.TextInput)
@@ -18,15 +18,22 @@ class ProductAdmin(admin.ModelAdmin):
     short_description2.short_description = 'Description 2'  # Column header
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'status', 'created_at', 'updated_at', 'display_order_items')
+    list_display = ('id', 'user', 'status', 'payment_type', 'total_cost', 'created_at', 'updated_at')
 
-    def display_order_items(self, obj):
-        return ", ".join([item.name for item in obj.order_items.all()])
-    display_order_items.short_description = 'Order Items'
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order', 'item', 'quantity', 'user', 'payment_type')
 
+    def user(self, obj):
+        return obj.order.user
+    user.short_description = 'User'
+
+    def payment_type(self, obj):
+        return obj.order.payment_type
+    payment_type.short_description = 'Payment Type'
+
+admin.site.register(Order, OrderAdmin)  # register OrderAdmin with Order
 admin.site.register(ContactMessage)  # register ContactMessage without a custom admin
 admin.site.register(Category)
 admin.site.register(Product, ProductAdmin)  # register ProductAdmin with Product
-admin.site.register(Order, OrderAdmin)  # register OrderAdmin with Order
+admin.site.register(OrderItem, OrderItemAdmin)  # register OrderItemAdmin with OrderItem
 admin.site.site_header = 'Penny Miller Books Administration'
-admin.site.site_title = 'Admin Operations'
