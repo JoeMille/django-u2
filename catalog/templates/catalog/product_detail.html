@@ -17,21 +17,10 @@
     </div>
     <form method="post" action="{% url 'add_to_basket' product.id %}">
         {% csrf_token %}
-        <select id="book-type" name="book_type" class="edition-chooser">
-            <option value="PB" data-price="{{ product.price_paperback }}">Paperback</option>
-            <option value="HB" data-price="{{ product.price_hardback }}">Hardback</option>
-        </select>
-        <p id="product-detail-price" class="product-detail-price price-box">Price: {{ product.price }}</p>
+        <input type="radio" id="pb" name="book_type" value="PB" checked>
+        <label for="pb">Paperback - ${{ product.price_paperback }}</label><br>
+        <input type="radio" id="hb" name="book_type" value="HB">
+        <label for="hb">Hardback - ${{ product.price_hardback }}</label>
         <input type="submit" value="Add to Basket">
     </form>
-</div>
-
-<script>
-    document.getElementById('book-type').addEventListener('change', function() {
-        var selectedOption = this.options[this.selectedIndex];
-        var price = selectedOption.getAttribute('data-price');
-        document.getElementById('product-detail-price').textContent = 'Price: ' + price;
-    });
-</script>
-
 {% endblock %}

@@ -1,4 +1,5 @@
 # Standard library imports
+from django import forms
 from django.conf import settings
 from django.contrib.auth import login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
@@ -105,17 +106,40 @@ def checkout(request):
     else:
         return redirect('login')
 
-# Add products to user basket
-def add_to_basket(request, product_id):
-    if not request.user.is_authenticated:
-        return JsonResponse({'message': 'Please log in to add items to the basket.'}, status=401)
+class AddToBasketForm(forms.Form):
+    book_type = forms.ChoiceField(choices=Product.BOOK_TYPES)
 
-    product = get_object_or_404(Product, pk=product_id)
-    basket, created = Basket.objects.get_or_create(user=request.user)
-    basket_item, created = BasketItem.objects.get_or_create(product=product, basket=basket)
-    if not created:
-        basket_item.quantity += 1
-        basket_item.save()
+@login_required
+def add_to_basket(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    basket = Basket.objects.get(user=request.user)
+
+    print(f"User: {request.user}")  # Debug: print the user
+    print(f"Product: {product}")  # Debug: print the product
+
+    if request.method == 'POST':
+        form = AddToBasketForm(request.POST)
+
+        if form.is_valid():
+            book_type = form.cleaned_data.get('book_type')
+
+            if book_type == 'PB':
+                price = product.price_paperback
+            elif book_type == 'HB':
+                price = product.price_hardback
+            else:
+                price = 0.00  # default price
+
+            basket_item, created = BasketItem.objects.get_or_create(
+                product=product,
+                basket=basket,
+            )
+
+            basket_item.price = price
+            basket_item.save()
+
+            print(f"Basket item: {basket_item}")  # Debug: print the basket item
+
     return redirect('products')
 
 # Remove items from checkout basket 

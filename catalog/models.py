@@ -70,18 +70,22 @@ class Basket(models.Model):
     items = models.ManyToManyField(Product, through='BasketItem')
 
     def total_cost(self):
-        return sum(item.total_price() for item in self.basketitem_set.all())
-    def get_total_price(self):
-        return sum(item.product.price * item.quantity for item in self.basketitem_set.all())
+        return sum(item.total_price for item in self.basketitem_set.all())  # Changed to property
 
-# Basket model, allowing for the creation of a basket for a user
+    def get_total_price(self):
+        return sum(item.total_price for item in self.basketitem_set.all())  # Changed to property
+
+
 class BasketItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
+    book_type = models.CharField(max_length=2, choices=[('PB', 'Paperback'), ('HB', 'Hardback')], default='PB')
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
 
+    @property  # Added property decorator
     def total_price(self):
-        return self.product.price * self.quantity
+        return self.product.get_price() * self.quantity
 
 RATING_CHOICES = [(i, i) for i in range(1, 11)]
 
