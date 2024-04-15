@@ -9,6 +9,8 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.db import IntegrityError
+from django.http import JsonResponse
+
 # Third party imports
 import stripe
 from stripe.error import InvalidRequestError
@@ -104,8 +106,10 @@ def checkout(request):
         return redirect('login')
 
 # Add products to user basket
-@login_required
 def add_to_basket(request, product_id):
+    if not request.user.is_authenticated:
+        return JsonResponse({'message': 'Please log in to add items to the basket.'}, status=401)
+
     product = get_object_or_404(Product, pk=product_id)
     basket, created = Basket.objects.get_or_create(user=request.user)
     basket_item, created = BasketItem.objects.get_or_create(product=product, basket=basket)
