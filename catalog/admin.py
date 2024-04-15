@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib import admin
-from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Order, OrderItem
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Order, OrderItem, UserProfile
 
 class ProductAdminForm(forms.ModelForm):
     description2 = forms.CharField(widget=forms.TextInput)
@@ -25,6 +27,16 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'status', 'payment_type', 'total_cost', 'created_at', 'updated_at')
     inlines = [OrderItemInline]
 
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+    can_delete = False
+    verbose_name_plural = 'UserProfile'
+
+class UserAdmin(BaseUserAdmin):
+    inlines = (UserProfileInline,)
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)  # register OrderAdmin with Order
 admin.site.register(ContactMessage)  # register ContactMessage without a custom admin
 admin.site.register(Category)

@@ -1,19 +1,21 @@
-# views.py
-import stripe
+# Standard library imports
 from django.conf import settings
-from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login
-from django.views.decorators.csrf import csrf_exempt
-from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Sale, Order, OrderItem  # Add OrderItem here
-from django.contrib.auth import logout as auth_logout
-from django.db.models import Prefetch
-from django.core.mail import send_mail
-from .forms import ContactForm
+from django.contrib.auth import login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.mail import send_mail
+from django.db.models import Prefetch
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.db import IntegrityError
+# Third party imports
+import stripe
 from stripe.error import InvalidRequestError
+
+# Local application imports
+from .forms import ContactForm, CustomUserCreationForm
+from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Sale, Order, OrderItem, UserProfile
 
 # Index page view
 def index(request):
@@ -47,15 +49,26 @@ def index(request):
 
 
 # User Registration View
+
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            house_number = form.cleaned_data.get('house_number')
+            street_name = form.cleaned_data.get('street_name')
+            town_city = form.cleaned_data.get('town_city')
+            county = form.cleaned_data.get('county')
+            eir_code = form.cleaned_data.get('eir_code')
+            try:
+                UserProfile.objects.create(user=user, house_number=house_number, street_name=street_name, town_city=town_city, county=county, eir_code=eir_code)
+            except IntegrityError as e:
+                print(e)
+                return render(request, 'catalog/register.html', {'form': form, 'error': 'Failed to create user profile.'})
             login(request, user)
             return redirect('index')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'catalog/register.html', {'form': form})
 
 # Logout view

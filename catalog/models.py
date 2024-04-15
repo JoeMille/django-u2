@@ -1,7 +1,18 @@
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    house_number = models.CharField(max_length=255)
+    street_name = models.CharField(max_length=255)
+    town_city = models.CharField(max_length=255)
+    county = models.CharField(max_length=255)
+    eir_code = models.CharField(max_length=7)
+
+    
 # Category model, allowing for the creation of categories for products
 class Category(models.Model):
     name = models.CharField(max_length=200)
