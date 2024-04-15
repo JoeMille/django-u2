@@ -151,6 +151,14 @@ body {
     margin-bottom: 50px;
 }
 
+@media screen and (max-width: 600px) {
+    .index-page-welcome {
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+    }
+}
+
 .index-page-welcome h2 {
     font-family: "Rubik Scribble", sans-serif;
     color: white;
@@ -187,7 +195,8 @@ body {
 .index-about-section {
     background-color:  rgb(68, 37, 117);
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Oswald", sans-serif;
+    font-size: large;
     padding: 20px;
     margin-left: auto;
     margin-top: -200px;
@@ -209,6 +218,14 @@ body {
 .index-about-section h2 {
     font-family: "Rubik Scribble", sans-serif;
     color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .index-about-section {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 
@@ -258,8 +275,8 @@ body {
 /* index about author section styling */
 .index-author-profile {
     width: 75%;
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
+    font-family: "Oswald", sans-serif;
+    font-size: large;
     background-color:  rgb(68, 37, 117);
     color: white;
     margin-top: 50px;
@@ -300,7 +317,7 @@ body {
     padding: 10px;
 }
 
-/* Featured Products Index Page Window */
+/* Index Page Featured Products  */
 
 .index-featured-products {
     font-family: 'Roboto', sans-serif;
@@ -349,7 +366,8 @@ body {
 }
 /* ABOUT PAGE style rules */
 .about-page-content {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Oswald", sans-serif;
+    font-size: large;
     text-align: center;
     color: white;
     background-color: rgb(68, 37, 117);

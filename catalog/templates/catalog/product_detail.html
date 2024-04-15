@@ -21,6 +21,8 @@
         <label for="pb">Paperback - ${{ product.price_paperback }}</label><br>
         <input type="radio" id="hb" name="book_type" value="HB">
         <label for="hb">Hardback - ${{ product.price_hardback }}</label>
-        <input type="submit" value="Add to Basket">
+        {% if user.is_authenticated %}
+            <input type="submit" value="Add to Basket">
+        {% endif %}
     </form>
 {% endblock %}
