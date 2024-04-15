@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 body {
     background-image: url('../images/Texas+Pasture+Grasses.jpg');
     background-size: cover;
@@ -20,7 +20,7 @@ body {
     background-image: url('../images/site-banner.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 350px;
     font-family: "Lobster", sans-serif;
     font-weight: bold; 
     font-style: normal;
@@ -395,9 +395,8 @@ body {
 /* Styling for the product page */
 
 .product-page-title {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;    background-color: #0f0736;
-    color: white;
+    font-family: "Oswald", sans-serif;
+    font-style: normal;
     font-size: 30px;
     text-align: center;
     padding: 5px; 
@@ -459,31 +458,32 @@ body {
     display: block; 
     border-radius: 5px;
 }
+
 .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .product-item {
     position: relative;
     background-color: white;
     color: black;
-    width: 25%; /* three items per row */
-    margin-bottom: 20px; /* creates a gap between rows */
+    width: 100%;
+    margin-bottom: 20px; 
     padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
     text-align: center;
     border: 2px solid #000000;
-    display: flex; /* Add this line */
-    flex-direction: column; /* Add this line */
+    display: flex; 
+    flex-direction: column;
 }
 
 .product-item img {
-    height: 200px; /* Adjust this value as needed */
-    width: 100%; /* This will make the image take the full width of its container */
-    object-fit: contain; /* This will ensure the aspect ratio of the image is maintained */
+    height: 200px;
+    width: 100%; 
+    object-fit: contain;
 }
 
 .product-title, .product-description, .product-price {
@@ -491,7 +491,7 @@ body {
 }
 
 .product-item form {
-    margin-top: auto; /* Add this line */
+    margin-top: auto; 
     width: 100%;
 }
 
