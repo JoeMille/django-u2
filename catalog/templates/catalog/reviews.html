@@ -24,6 +24,7 @@
 
 
 <!-- Product review form -->
+{% if user.is_authenticated %}
 <div class="review-form">
     <form method="POST" action="{% url 'create_review' %}" id="reviewForm">
         {% csrf_token %}
@@ -40,6 +41,9 @@
         <input type="submit" value="Submit">
     </form>
 </div>
+{% else %}
+<p class="review-turnaround">You must be logged in to leave a review.</p>
+{% endif %}
 
 <!-- Product reviews -->
 

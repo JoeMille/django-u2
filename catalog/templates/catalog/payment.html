@@ -40,41 +40,6 @@
 <form action="{% url 'charge' %}" method="post" id="payment-form">
     {% csrf_token %}
     
-    <!-- Address Fields -->
-    <div class="form-row">
-        <label for="house">
-            House Number/Name
-        </label>
-        <input type="text" id="house" name="house" required>
-    </div>
-    
-    <div class="form-row">
-        <label for="street">
-            Street
-        </label>
-        <input type="text" id="street" name="street" required>
-    </div>
-    
-    <div class="form-row">
-        <label for="city">
-            Town/City
-        </label>
-        <input type="text" id="city" name="city" required>
-    </div>
-    
-    <div class="form-row">
-        <label for="county">
-            County
-        </label>
-        <input type="text" id="county" name="county" required>
-    </div>
-    
-    <div class="form-row">
-        <label for="eircode">
-            Eircode
-        </label>
-        <input type="text" id="eircode" name="eircode" pattern="^[A-Za-z0-9]{7}$" title="Please enter a valid Eircode" required>
-    </div>
 
     <div class="form-row">
         <label for="card-element">

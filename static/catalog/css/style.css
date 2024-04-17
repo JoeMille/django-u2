@@ -381,6 +381,14 @@ body {
 }
 
 /* styling for register page */
+.user-registration-title {
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%;
+
+}
 
 .user-registration {
     font-family: "Roboto", sans-serif;
@@ -551,6 +559,7 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .product-detail-content img.product-detail-image {

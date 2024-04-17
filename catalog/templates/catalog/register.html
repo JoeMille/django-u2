@@ -3,9 +3,13 @@
 
 
 {% block content %}
+<section class="user-registration-title">
+    <h2>Register to create an account, please provide a correct mailing address for purchase fulfilment</h2>
+</section>
+
+
 
 <div class="user-registration">
-<h2>Register</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

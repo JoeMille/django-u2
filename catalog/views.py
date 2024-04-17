@@ -22,17 +22,11 @@ from .models import Category, Product, Basket, BasketItem, Review, ContactMessag
 
 # Index page view
 def index(request):
-    contact_form = ContactForm()
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
-        contact_form = ContactForm(request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('index')
-        elif contact_form.is_valid():
-            message = contact_form.cleaned_data['message']
-            ContactMessage.objects.create(message=message)  
             return redirect('index')
     else:
         form = AuthenticationForm()
@@ -45,13 +39,7 @@ def index(request):
     # Fetch featured products 
     featured_products = Product.objects.filter(featured=True)[:4]
 
-    # Fetch legendary products
-    legendary_products = Product.objects.filter(category__name='Legendary')
-
-    return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products, 'legendary_products': legendary_products, 'contact_form': contact_form})
-
-
-# User Registration View
+    return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products})
 
 def register(request):
     if request.method == 'POST':
@@ -176,8 +164,8 @@ def charge(request):
         # Create Stripe charge
         try:
             charge =  stripe.Charge.create(
-                amount=total_cost,  # Pass the total cost here
-                currency='gbp',
+                amount=int(total_cost * 100),  # Convert total cost to cents
+                currency='eur',  # Use euros
                 description='Example charge',
                 source=token,
             )
@@ -208,7 +196,7 @@ def charge(request):
             return HttpResponse(f'Error: {str(e)}', status=400)
 
         # Redirect to a "payment complete" page after a successful charge
-        return redirect('payment_complete')
+        return redirect('charge')
 
     return render(request, 'catalog/charge.html')
 
