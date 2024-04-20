@@ -70,11 +70,10 @@ class Basket(models.Model):
     items = models.ManyToManyField(Product, through='BasketItem')
 
     def total_cost(self):
-        return sum(item.total_price for item in self.basketitem_set.all())  # Changed to property
+        return sum(item.price for item in self.basketitem_set.all())
 
     def get_total_price(self):
-        return sum(item.total_price for item in self.basketitem_set.all())  # Changed to property
-
+        return sum(item.price for item in self.basketitem_set.all())
 
 class BasketItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

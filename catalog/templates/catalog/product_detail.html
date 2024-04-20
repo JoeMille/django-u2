@@ -15,14 +15,24 @@
         <img class="product-multi-img" src="{{ product.image5.url }}" alt="{{ product.title }}">
         <img class="product-multi-img" src="{{ product.image6.url }}" alt="{{ product.title }}">
     </div>
+
+    <!-- Form for adding paperback to basket -->
     <form method="post" action="{% url 'add_to_basket' product.id %}">
         {% csrf_token %}
-        <input type="radio" id="pb" name="book_type" value="PB" checked>
+        <input type="hidden" name="book_type" value="PB">
         <label for="pb">Paperback - ${{ product.price_paperback }}</label><br>
-        <input type="radio" id="hb" name="book_type" value="HB">
+        {% if user.is_authenticated %}
+            <input type="submit" value="Add Paperback to Basket">
+        {% endif %}
+    </form>
+
+    <!-- Form for adding hardback to basket -->
+    <form method="post" action="{% url 'add_to_basket' product.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="book_type" value="HB">
         <label for="hb">Hardback - ${{ product.price_hardback }}</label>
         {% if user.is_authenticated %}
-            <input type="submit" value="Add to Basket">
+            <input type="submit" value="Add Hardback to Basket">
         {% endif %}
     </form>
     

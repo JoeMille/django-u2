@@ -17,7 +17,7 @@ import stripe
 from stripe.error import InvalidRequestError
 
 # Local application imports
-from .forms import ContactForm, CustomUserCreationForm
+from .forms import CustomUserCreationForm
 from .models import Category, Product, Basket, BasketItem, Review, ContactMessage, Sale, Order, OrderItem, UserProfile
 
 # Index page view
@@ -247,3 +247,15 @@ def delete_review(request, review_id):
     if request.user == review.user:
         review.delete()
     return redirect('reviews')
+
+def dashboard(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = UserUpdateForm(instance=request.user)
+
+    return render(request, 'catalog/dashboard.html', {'form': form})
