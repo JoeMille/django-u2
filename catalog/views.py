@@ -11,6 +11,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.db import IntegrityError
 from django.http import JsonResponse
+from .forms import UserUpdateForm, UserProfileForm
+
 
 # Third party imports
 import stripe
@@ -46,6 +48,7 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            email = form.cleaned_data.get('email')
             house_number = form.cleaned_data.get('house_number')
             street_name = form.cleaned_data.get('street_name')
             town_city = form.cleaned_data.get('town_city')
@@ -96,6 +99,7 @@ def checkout(request):
 
 class AddToBasketForm(forms.Form):
     book_type = forms.ChoiceField(choices=Product.BOOK_TYPES)
+
 
 @login_required
 def add_to_basket(request, product_id):
@@ -250,12 +254,18 @@ def delete_review(request, review_id):
 
 def dashboard(request):
     if request.method == 'POST':
-        form = UserUpdateForm(request.POST, instance=request.user)
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = UserProfileForm(request.POST, instance=request.user.userprofile)
 
-        if form.is_valid():
-            form.save()
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your account has been updated.')
             return redirect('dashboard')
+        else:
+            messages.error(request, 'Please correct the error below.')
     else:
-        form = UserUpdateForm(instance=request.user)
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = UserProfileForm(instance=request.user.userprofile)
 
-    return render(request, 'catalog/dashboard.html', {'form': form})
+    return render(request, 'catalog/dashboard.html', {'user_form': user_form, 'profile_form': profile_form})
