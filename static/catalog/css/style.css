@@ -809,6 +809,17 @@ body {
     border-radius: 5px;
 }
 
+@media (max-width: 600px) {
+    .review-image-container {
+        max-width: 100%;
+    }
+
+    .review-image-container img {
+        max-width: 100%; 
+        max-height: auto; 
+    }
+}
+
 .review-form {
     font-family: 'Roboto', sans-serif;
     padding: 10px;
