@@ -119,8 +119,7 @@ body {
 /* CSS for mobile and small devices */
 @media only screen and (max-width: 480px) {
     .basket-info {
-        position: static;
-        right: auto;
+        display: none;
     }
 }
 /* index page welcome */
@@ -574,7 +573,12 @@ body {
 }
 
 
-/* PRODUCT_DETAIL PAGE STYLING */
+@media only screen and (max-width: 480px) {
+    .amazon-link {
+        width: 90%; 
+    }
+}
+
 
 /* PRODUCT DETAIL styles */
 
@@ -609,6 +613,36 @@ body {
     display: block; 
     margin: 0 auto; 
     object-fit: cover; 
+}
+
+/* Styles for small screens */
+@media (max-width: 600px) {
+    .product-detail-content {
+        width: 100%;
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+
+    .product-detail-content .product-multi-img-container {
+        flex-direction: column;
+    }
+
+    /* Add custom scrollbar */
+    .product-detail-content::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .product-detail-content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .product-detail-content::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    .product-detail-content::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 }
 
 .my-form-wrapper {
@@ -647,6 +681,18 @@ body {
 
 .my-form-wrapper input[type="submit"] {
     font-size: 24px; /* make the font size of the button even larger */
+}
+
+/* Styles for small screens */
+@media (max-width: 600px) {
+    .my-form-wrapper label, .my-form-wrapper input {
+        width: 90%; /* increase width to 90% to make the elements larger */
+        font-size: 16px; /* decrease font size */
+    }
+
+    .my-form-wrapper input[type="submit"] {
+        font-size: 20px; /* decrease the font size of the button */
+    }
 }
 
 /* Styling for the further information section of index page */
@@ -946,4 +992,20 @@ body {
 .middle-list li {
     list-style-type: none;
     font-size: 17px; /* Adjust this value as needed */
+}
+
+/* Styles for small screens */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column; /* Stack the footer contents vertically */
+        font-size: 12px; /* Reduce the font size */
+    }
+
+    .footer-links, .middle-list, .right-content {
+        margin-top: 10px; /* Reduce the top margin */
+    }
+
+    .middle-list li {
+        display: none;
+    }
 }
