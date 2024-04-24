@@ -1,6 +1,11 @@
-/* jshint esversion: 6 */
-
-
+document.querySelector('.site-nav .menu-toggle').addEventListener('click', function() {
+    var nav = document.querySelector('.site-nav ul');
+    if (nav.style.display === 'none' || nav.style.display === '') {
+        nav.style.display = 'flex';
+    } else {
+        nav.style.display = 'none';
+    }
+});
 
 
 // index image carousel
