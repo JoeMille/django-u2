@@ -17,25 +17,29 @@
     </div>
 
     <!-- Form for adding paperback to basket -->
-    <form method="post" action="{% url 'add_to_basket' product.id %}">
-        {% csrf_token %}
-        <input type="hidden" name="book_type" value="PB">
-        <label for="pb">Paperback - ${{ product.price_paperback }}</label><br>
-        {% if user.is_authenticated %}
-            <input type="submit" value="Add Paperback to Basket">
-        {% endif %}
-    </form>
-
-    <!-- Form for adding hardback to basket -->
-    <form method="post" action="{% url 'add_to_basket' product.id %}">
-        {% csrf_token %}
-        <input type="hidden" name="book_type" value="HB">
-        <label for="hb">Hardback - ${{ product.price_hardback }}</label>
-        {% if user.is_authenticated %}
-            <input type="submit" value="Add Hardback to Basket">
-        {% endif %}
-    </form>
+    <div class="my-form-wrapper">
+        <form method="post" action="{% url 'add_to_basket' product.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="book_type" value="HB">
+            <label for="hb">Hardback - ${{ product.price_hardback }}</label>
+            {% if user.is_authenticated %}
+                <input type="submit" value="Add Hardback to Basket">
+            {% endif %}
+        </form>
+    </div>
     
+    <!-- Form for adding paperback to basket -->
+    <div class="my-form-wrapper">
+        <form method="post" action="{% url 'add_to_basket' product.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="book_type" value="PB">
+            <label for="pb">Paperback - ${{ product.price_paperback }}</label>
+            {% if user.is_authenticated %}
+                <input type="submit" value="Add Paperback to Basket">
+            {% endif %}
+        </form>
+    </div>
+
 {% block footer %}
 {% endblock %} 
     

@@ -225,6 +225,7 @@ body {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
+        margin-top: 0;
     }
 }
 
@@ -295,6 +296,12 @@ body {
     margin: auto; /* center the image */
 }
 
+@media (max-width: 600px) {
+    .index-author-profile {
+        width: 100%; /* Make the author profile take up the full width of the page */
+    }
+}
+
 /* featured product styling */
 
 .featured-product-title {
@@ -353,18 +360,11 @@ body {
 
 /* CSS for mobile and small devices displaying the top 2 features*/
 @media only screen and (max-width: 480px) {
-    .featured-products {
-        justify-content: flex-start; 
-    }
-    .featured-products .product {
-        width: 50%; 
-        box-sizing: border-box; 
-    }
-    .featured-products .product:nth-child(n+3) {
-        display: none; 
+    .index-featured-products, .featured-product-title {
+        display: none; /* Hide the featured products on small screens */
     }
 }
-/* ABOUT PAGE style rules */
+/* sABOUT PAGE style rules */
 .about-page-content {
     font-family: "Oswald", sans-serif;
     font-size: large;
@@ -380,6 +380,15 @@ body {
 
 }
 
+@media (max-width: 600px) {
+    .about-page-content {
+        width: 100%; 
+    }
+    .about-page-content img {
+        width: 100%; /* Make the images take up the full width of the page */
+    }
+}
+
 /* styling for register page */
 .user-registration-title {
     font-family: "Roboto", sans-serif;
@@ -388,6 +397,13 @@ body {
     margin: 0 auto;
     width: 50%;
 
+}
+
+@media (max-width: 600px) {
+    .user-registration-title {
+        width: 100%;
+        margin-bottom: 10px; /* Make the images take up the full width of the page */
+    }
 }
 
 .user-registration {
@@ -582,21 +598,44 @@ body {
     object-fit: cover; 
 }
 
-.product-detail-content form {
-    margin-top: 20px;
+.my-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
 }
 
-.edition-chooser {
-    font-size: 1.5em;
-    padding: 10px;
+.my-form-wrapper form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.price-box {
-    font-size: 1.5em;
-    border: 2px solid black;
+.my-form-wrapper label {
+    font-size: 24px;
+    display: block;
+    width: 80%; /* reduce width to 80% to center the elements */
     padding: 10px;
-    width: fit-content;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 20px; /* increase font size */
+    text-align: center; /* center the text */
 }
+
+.my-form-wrapper input {
+    display: block;
+    width: 40%; /* reduce width to 80% to center the elements */
+    padding: 5px; /* reduce padding to make the button thinner */
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 20px; /* increase font size */
+}
+
+.my-form-wrapper input[type="submit"] {
+    font-size: 24px; /* make the font size of the button even larger */
+}
+
 /* Styling for the further information section of index page */
 
 .further-info {
