@@ -979,12 +979,28 @@ body {
         width: 85%; /* Make it take up 85% of the screen width */
     }
 }
+/* Styling for the dashboard page */
 
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Anton", sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(16, 10, 44);
+    padding: 20px; /* Add padding to the container */
+}
+
+.user-info, .user-info-input {
+    flex: 1;
+    margin: 0 20px; /* Increase margin to add space between the divs */
+    text-align: justify; /* Align the text uniformly */
+}
 
 /* Styling for the footer page */
 
 .footer-container {
-    font-family: "Roboto", sans-serif;
+    font-family: "Exo 2", sans-serif;
     font-size: 15px;
     display: flex;
     justify-content: space-between;

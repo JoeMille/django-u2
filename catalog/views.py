@@ -1,5 +1,6 @@
 # Standard library imports
 from django import forms
+from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
@@ -11,7 +12,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.db import IntegrityError
 from django.http import JsonResponse
-from .forms import UserUpdateForm, UserProfileForm
+from .forms import UserUpdateForm, UserProfileForm, MessageForm
 
 
 # Third party imports
@@ -252,20 +253,16 @@ def delete_review(request, review_id):
         review.delete()
     return redirect('reviews')
 
+@login_required
 def dashboard(request):
+    user = request.user
+    profile = UserProfile.objects.filter(user=user).first()
     if request.method == 'POST':
-        user_form = UserUpdateForm(request.POST, instance=request.user)
-        profile_form = UserProfileForm(request.POST, instance=request.user.userprofile)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your account has been updated.')
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
             return redirect('dashboard')
-        else:
-            messages.error(request, 'Please correct the error below.')
     else:
-        user_form = UserUpdateForm(instance=request.user)
-        profile_form = UserProfileForm(instance=request.user.userprofile)
-
-    return render(request, 'catalog/dashboard.html', {'user_form': user_form, 'profile_form': profile_form})
+        form = UserProfileForm(instance=profile)
+    return render(request, 'catalog/dashboard.html',
+                  {'user': user, 'profile': profile, 'form': form})

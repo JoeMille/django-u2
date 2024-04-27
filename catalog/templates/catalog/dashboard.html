@@ -1,10 +1,37 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    <button type="submit">Update</button>
-</form>
+
+<div class="dasboard-title">
+    <h1>Dashboard</h1>
+    <p>Update your details for purchase fulfillment...</p>
+</div>
+
+<div class="dashboard-container">
+        <div class="user-info">
+            <h1>Welcome, {{ user.username }}</h1>
+            <h2>Your Current Order Details</h2>
+            <p>Email: {{ user.email }}</p>
+            {% if profile %}
+            <p>House Number: {{ profile.house_number }}</p>
+            <p>Street Name: {{ profile.street_name }}</p>
+            <p>Town/City: {{ profile.town_city }}</p>
+            <p>County: {{ profile.county }}</p>
+            <p>Eir Code: {{ profile.eir_code }}</p>
+            {% endif %}
+        </div>
+
+        <div class="user-info-input">
+            <h3>Update your details here...</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="dashboard-submit">Update</button>
+            </form>
+        </div>
+</div>
+
+{% block footer %}
+{% endblock %} 
+
 {% endblock %}

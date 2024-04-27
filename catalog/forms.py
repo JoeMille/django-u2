@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import models, UserProfile 
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -32,3 +32,11 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+class MessageForm(forms.Form):
+    your_name = forms.CharField(max_length=100)
+    your_message = forms.CharField(widget=forms.Textarea)
+
+class Message(models.Model):
+    name = models.CharField(max_length=100)
+    message = models.TextField()
