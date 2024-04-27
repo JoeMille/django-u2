@@ -2,22 +2,24 @@
 
 {% block content %}
 
-<div class="dasboard-title">
+<div class="dashboard-title">
     <h1>Dashboard</h1>
     <p>Update your details for purchase fulfillment...</p>
 </div>
 
-<div class="dashboard-container">
+
+
+    <div class="dashboard-container">
         <div class="user-info">
-            <h1>Welcome, {{ user.username }}</h1>
-            <h2>Your Current Order Details</h2>
-            <p>Email: {{ user.email }}</p>
+            <h1>Welcome, {{ user.username }}</h1><br>
+            <h2>Your Current Order Details</h2><br>
+            <p>Email: {{ user.email }}</p><br>
             {% if profile %}
-            <p>House Number: {{ profile.house_number }}</p>
-            <p>Street Name: {{ profile.street_name }}</p>
-            <p>Town/City: {{ profile.town_city }}</p>
-            <p>County: {{ profile.county }}</p>
-            <p>Eir Code: {{ profile.eir_code }}</p>
+            <p>House Number: {{ profile.house_number }}</p><br>
+            <p>Street Name: {{ profile.street_name }}</p><br>
+            <p>Town/City: {{ profile.town_city }}</p><br>
+            <p>County: {{ profile.county }}</p><br>
+            <p>Eir Code: {{ profile.eir_code }}</p><br>
             {% endif %}
         </div>
 
@@ -25,11 +27,11 @@
             <h3>Update your details here...</h3>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_p }}<br>
                 <button type="submit" class="dashboard-submit">Update</button>
             </form>
         </div>
-</div>
+    </div>
 
 {% block footer %}
 {% endblock %} 
