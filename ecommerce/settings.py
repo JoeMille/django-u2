@@ -29,7 +29,7 @@ DEBUG = True
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'penny-miller-author-page-9d9d6e6d9988.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'penny-miller-author-page-9d9d6e6d9988.herokuapp.com', 'www.desperatedogs.ie']
 
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
