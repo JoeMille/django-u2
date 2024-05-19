@@ -998,18 +998,22 @@ body {
     display: flex;
     justify-content: space-around; /* Add space between the divs */
     padding: 20px; /* Add some padding inside the container *//* Add a blue background */
+    text-align: center;
 }
 
 .user-info, .user-info-input {
     background-color: white; /* Add a white background to contrast with the blue */
     padding: 20px; /* Add some padding inside the divs */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-sizing: border-box; 
+    text-align: center;
+    justify-content: center;
 }
 
 .user-info-input form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .user-info-input input[type="text"], .user-info-input textarea {
@@ -1017,6 +1021,7 @@ body {
     height: 40px; /* Set a specific height for all text input and textarea elements */
     padding: 10px; /* Uniform padding inside the input and textarea elements */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    text-align: center;
 }
 
 /* Styling for the footer page */

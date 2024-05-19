@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True#
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
