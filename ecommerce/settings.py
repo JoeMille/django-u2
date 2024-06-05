@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # Stripe API keys
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'penny-miller-author-page-9d9d6e6d9988.herokuapp.com', 'www.desperatedogs.ie']
+ALLOWED_HOSTS = ['127.0.0.1', 'penny-miller-author-page-9d9d6e6d9988.herokuapp.com', 'www.desperatedogs.ie', 'http://127.0.0.1:8000', '8000-joemille-djangou2-u8jk8nehvl1.ws-eu114.gitpod.io']
 
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
-SECURE_SSL_REDIRECT = True
+#return to true in development final
+SECURE_SSL_REDIRECT = False
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
